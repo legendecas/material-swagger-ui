@@ -54,6 +54,8 @@
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0",
     "superagent": "^2.2.0"
   },
   "babel": {
@@ -68,11 +70,20 @@
   "eslintConfig": {
     "extends": "airbnb",
     "root": true,
+    "parserOptions": {
+      "ecmaFeatures": {
+        "experimentalObjectRestSpread": true
+      }
+    },
     "env": {
       "browser": true
     },
+    "globals": {
+      "$": true
+    },
     "rules": {
       "react/jsx-space-before-closing": "off",
+      "no-return-assign": "off",
       "react/require-extension": "off"
     }
   },
