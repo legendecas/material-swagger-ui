@@ -43,12 +43,18 @@
   "dependencies": {
     "aphrodite": "^0.5.0",
     "classnames": "^2.2.5",
+    "github-markdown-css": "^2.4.0",
     "hammerjs": "^2.0.8",
+    "highlight.js": "^9.6.0",
     "jquery": "^2.2.4",
     "js-yaml": "^3.6.1",
+    "marked": "^0.3.6",
     "materialize-css": "^0.97.7",
     "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "react-dom": "^15.3.1",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "superagent": "^2.2.0"
   },
   "babel": {
     "presets": [

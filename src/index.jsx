@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'materialize-css/dist/js/materialize.min';
-import 'materialize-css/dist/css/materialize.min.css';
+import './vendor/materialized';
+import './vendor/highlight';
+import './index.css';
+import App from './App';
 
 ReactDOM.render(
-  <div>Hello world!</div>,
+  <App/>,
   document.getElementById('content')
 );
