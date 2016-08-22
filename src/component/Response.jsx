@@ -13,7 +13,7 @@ const Response = ({ status, response }) => {
           __html: marked(description),
         }}
       />
-      <Model schema={schema} examples={examples}/>
+      { schema || examples ? <Model schema={schema} examples={examples}/> : null}
     </div>
   );
 };

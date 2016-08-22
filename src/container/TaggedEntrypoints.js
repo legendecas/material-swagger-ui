@@ -6,9 +6,10 @@ const TaggedEntrypoints = connect(
   state => ({
     lists: _.map(state.definition.tags,
       tag => ({
-        title: tag,
+        title: tag.name,
+        description: tag.description,
         entrypoints: _.filter(state.definition.entrypoints,
-          entrypoint => _.includes(entrypoint.operation.tags, tag)),
+          entrypoint => _.includes(entrypoint.operation.tags, tag.name)),
       })),
   }),
   () => ({})
