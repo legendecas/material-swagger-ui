@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import './TagList.css';
 
@@ -24,9 +24,17 @@ const style = StyleSheet.create({
   },
 });
 
-const TagList = ({ pinList }) => (
+const TagList = () => (
   <div className={`col m3 l2 ${css(style.wrapper)}`}>
-    <taglist ref={pinList} className={css(style.taglist)}>
+    <taglist
+      ref={list => {
+        $(window).load(() => {
+          console.log($(list).offset().top);
+          $(list).pushpin({ top: $(list).offset().top });
+        });
+      }}
+      className={css(style.taglist)}
+    >
       <ul>
         <li><a name="tag-a" href="#tag-a" className="active">Tag A</a></li>
         <li><a name="tag-b" href="#tag-b">Tag B</a></li>
@@ -36,9 +44,5 @@ const TagList = ({ pinList }) => (
     </taglist>
   </div>
 );
-
-TagList.propTypes = {
-  pinList: PropTypes.func,
-};
 
 export default TagList;

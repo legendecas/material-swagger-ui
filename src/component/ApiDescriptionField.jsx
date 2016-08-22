@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import marked from 'marked';
 import 'github-markdown-css/github-markdown.css';
 
@@ -93,20 +93,11 @@ in your list of issues. It works in Pull Requests, too!
 And, of course emoji! :sparkles: :camel: :boom:
 `);
 
-const ApiDescriptionField = ({ pinPosition }) => (
+const ApiDescriptionField = () => (
   <article
-    ref={ref => {
-      $(window).load(() => {
-        pinPosition($(ref).offset().top + $(ref).height());
-      });
-    }}
     className="markdown-body"
     dangerouslySetInnerHTML={{ __html: markdown }}
   />
 );
-
-ApiDescriptionField.propTypes = {
-  pinPosition: PropTypes.func,
-};
 
 export default ApiDescriptionField;

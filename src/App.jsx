@@ -3,9 +3,9 @@ import { StyleSheet, css } from 'aphrodite';
 import { Provider } from 'react-redux';
 import store from './store';
 import Header from './component/Header';
-import ApiDescriptionField from './container/PinnedApiDescriptionField';
+import ApiDescriptionField from './component/ApiDescriptionField';
 import Footer from './component/Footer';
-import PinnedTagList from './container/PinnedTagList';
+import TagList from './component/TagList';
 
 const style = StyleSheet.create({
   app: {
@@ -31,7 +31,7 @@ const App = () => (
       <main className={`container ${css(style.main)}`}>
         <ApiDescriptionField/>
         <div className={`row ${css(style.apiContent)}`}>
-          <PinnedTagList/>
+          <TagList/>
         </div>
         <div style={{ height: '1000vh' }}/>
       </main>
