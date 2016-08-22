@@ -53,8 +53,9 @@ module.exports = {
     publicPath: 'dist/',
     filename: 'js/[name].bundle.js',
   },
+  contentBase: '.',
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
   },
   module: {
     loaders: [

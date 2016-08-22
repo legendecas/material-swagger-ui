@@ -38,7 +38,8 @@
     "file-loader": "^0.9.0",
     "style-loader": "^0.13.1",
     "typings": "^1.3.2",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "aphrodite": "^0.5.0",
@@ -88,8 +89,10 @@
     }
   },
   "scripts": {
+    "dist": "NODE_ENV=production webpack",
     "test": "npm run-script lint",
-    "webpack-dev": "webpack --watch",
+    "webpack-watch": "webpack --watch",
+    "serve": "webpack-dev-server",
     "lint": "eslint ."
   }
 }
