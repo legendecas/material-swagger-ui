@@ -4,7 +4,7 @@ import { StyleSheet, css } from 'aphrodite';
 const style = StyleSheet.create({
   header: {
     background: '#1E88E5',
-    minHeight: '96px',
+    minHeight: '114px',
     display: 'flex',
     alignItems: 'center',
   },

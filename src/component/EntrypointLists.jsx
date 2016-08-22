@@ -26,12 +26,12 @@ const EntrypointLists = ({ lists }) => (
           key={title}
           id={title}
           name={title}
-          className={css(style.tagList)}
+          className={`section scrollspy ${css(style.tagList)}`}
           ref={ref => $(document).ready(() => {
-            $(ref).scrollSpy();
+            $(ref).scrollSpy({ scrollOffset: 0 });
           })}
         >
-          <a className="black-text scroll-spy" href={`#${title}`}><h4>{title}</h4></a>
+          <a className="black-text" href={`#${title}`}><h2>{title}</h2></a>
           <div className={css(style.entrypointList)}>
             {entrypoints.map(entrypoint =>
               <EntrypointCard

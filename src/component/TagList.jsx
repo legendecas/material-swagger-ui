@@ -34,7 +34,7 @@ const TagList = ({ tags }) => (
       }}
       className={css(style.taglist)}
     >
-      <ul>
+      <ul className="section">
         {tags.map(tag => <li key={tag}><a href={`#${tag}`}>{tag}</a></li>)}
       </ul>
     </taglist>
