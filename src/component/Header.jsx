@@ -9,8 +9,10 @@ const style = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
+    paddingBottom: '6px',
     display: 'flex',
     alignItems: 'center',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
   },
   apiInfo: {
