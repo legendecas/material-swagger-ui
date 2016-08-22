@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import classNames from 'classnames';
 
 const style = StyleSheet.create({
   header: {
@@ -23,7 +22,7 @@ const style = StyleSheet.create({
 
 const Header = () => (
   <header className={css(style.header)}>
-    <div className={classNames('container', css(style.container))}>
+    <div className={`container ${css(style.container)}`}>
       <h3 className="white-text ">
         Swagger UI
       </h3>

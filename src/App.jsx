@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import classNames from 'classnames';
 import { Provider } from 'react-redux';
 import store from './store';
 import Header from './component/Header';
@@ -29,9 +28,9 @@ const App = () => (
   <Provider store={store}>
     <app className={css(style.app)}>
       <Header/>
-      <main className={classNames('container', css(style.main))}>
+      <main className={`container ${css(style.main)}`}>
         <ApiDescriptionField/>
-        <div className={classNames('row', css(style.apiContent))}>
+        <div className={`row ${css(style.apiContent)}`}>
           <PinnedTagList/>
         </div>
         <div style={{ height: '1000vh' }}/>

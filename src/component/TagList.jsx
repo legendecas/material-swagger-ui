@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import classNames from 'classnames';
 import './TagList.css';
 
 const style = StyleSheet.create({
@@ -26,7 +25,7 @@ const style = StyleSheet.create({
 });
 
 const TagList = ({ pinList }) => (
-  <div className={classNames('col m3 l2', css(style.wrapper))}>
+  <div className={`col m3 l2 ${css(style.wrapper)}`}>
     <taglist ref={pinList} className={css(style.taglist)}>
       <ul>
         <li><a name="tag-a" href="#tag-a" className="active">Tag A</a></li>
