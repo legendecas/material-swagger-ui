@@ -22,13 +22,16 @@ export default class EntrypointCard extends Component {
     const { method, path, operation } = this.props;
     const { description = '', summary, parameters = [], responses = {}, security = [] } = operation;
     const { revealed } = this.state;
+    const href = method.toUpperCase() + path;
 
     return (
       <entrypoint>
         <div className="card">
-          <div className={`entrypoint-method entrypoint-${method} white-text`}>
-            <span className="entrypoint-method-name">{method.toUpperCase()}</span>
-            <span className="entrypoint-method-path">{path}</span>
+          <div className={`entrypoint-method entrypoint-${method}`}>
+            <a name={href} href={`#${href}`}>
+              <span className="entrypoint-method-name white-text">{method.toUpperCase()}</span>
+              <span className="entrypoint-method-path white-text">{path}</span>
+            </a>
           </div>
           <div className="card-content">
             <p>{summary}</p>
