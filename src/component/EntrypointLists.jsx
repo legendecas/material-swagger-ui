@@ -22,8 +22,16 @@ const EntrypointLists = ({ lists }) => (
   <div className={css(style.listWrapper)}>
     {
       lists.map(({ title, entrypoints }) =>
-        <div key={title} className={css(style.tagList)}>
-          <a name={title} className="black-text"><h4>{title}</h4></a>
+        <div
+          key={title}
+          id={title}
+          name={title}
+          className={css(style.tagList)}
+          ref={ref => $(document).ready(() => {
+            $(ref).scrollSpy();
+          })}
+        >
+          <a className="black-text scroll-spy" href={`#${title}`}><h4>{title}</h4></a>
           <div className={css(style.entrypointList)}>
             {entrypoints.map(entrypoint =>
               <EntrypointCard
