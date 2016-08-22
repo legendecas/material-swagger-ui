@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import './TagList.css';
 
@@ -24,25 +24,25 @@ const style = StyleSheet.create({
   },
 });
 
-const TagList = () => (
+const TagList = ({ tags }) => (
   <div className={`col m3 l2 ${css(style.wrapper)}`}>
     <taglist
       ref={list => {
-        $(window).load(() => {
-          console.log($(list).offset().top);
-          $(list).pushpin({ top: $(list).offset().top });
-        });
+        const offset = $(list).offset() || {};
+        const top = offset.top;
+        $(list).pushpin({ top });
       }}
       className={css(style.taglist)}
     >
       <ul>
-        <li><a name="tag-a" href="#tag-a" className="active">Tag A</a></li>
-        <li><a name="tag-b" href="#tag-b">Tag B</a></li>
-        <li><a name="tag-c" href="#tag-c">Tag C</a></li>
-        <li><a name="tag-d" href="#tag-d">Tag D</a></li>
+        {tags.map(tag => <li key={tag}><a href={`#${tag}`}>{tag}</a></li>)}
       </ul>
     </taglist>
   </div>
 );
+
+TagList.propTypes = {
+  tags: PropTypes.arrayOf(PropTypes.string),
+};
 
 export default TagList;

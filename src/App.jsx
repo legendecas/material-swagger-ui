@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import { Provider } from 'react-redux';
+import qs from 'querystring';
 import store from './store';
-import Header from './component/Header';
-import ApiDescriptionField from './component/ApiDescriptionField';
+import action from './action/definition';
+import ConnectedHeader from './container/ConnectedHeader';
+import ApiDescriptionContainer from './container/ApiDescriptionContainer';
 import Footer from './component/Footer';
-import TagList from './component/TagList';
 import EntrypointCard from './component/EntrypointCard';
+import TagListContainer from './container/TagListContainer';
 
 const style = StyleSheet.create({
   app: {
@@ -32,11 +34,11 @@ const style = StyleSheet.create({
 const App = () => (
   <Provider store={store}>
     <app className={css(style.app)}>
-      <Header/>
+      <ConnectedHeader/>
       <main className={`container ${css(style.main)}`}>
-        <ApiDescriptionField/>
+        <ApiDescriptionContainer/>
         <div className={`row ${css(style.apiContent)}`}>
-          <TagList/>
+          <TagListContainer/>
           <div className={`col s12 m9 l9 offset-l1 ${css(style.entrypointList)}`}>
             <EntrypointCard revealed/>
             <EntrypointCard method={'post'}/>
@@ -50,3 +52,7 @@ const App = () => (
 );
 
 export default App;
+
+const query = qs.parse(window.location.search.slice(1));
+const url = query.url || 'http://petstore.swagger.io/v2/swagger.json';
+store.dispatch(action.getDefinition(url));
