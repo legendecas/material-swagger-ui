@@ -27,11 +27,20 @@ export default class EntrypointCard extends Component {
     return (
       <entrypoint>
         <div className="card">
-          <div className={`entrypoint-method entrypoint-${method}`}>
+          <div
+            className={`entrypoint-method entrypoint-${method} ${classNames({
+              'entrypoint-deprecated': operation.deprecated,
+            })}`}
+          >
             <a name={href} href={`#${href}`}>
               <span className="entrypoint-method-name white-text">{method.toUpperCase()}</span>
               <span className="entrypoint-method-path white-text">{path}</span>
             </a>
+            {
+              operation.deprecated ?
+                <span style={{ marginRight: '20px' }} className="white-text">Deprecated</span> :
+                null
+            }
           </div>
           <div className="card-content">
             <p>{summary}</p>

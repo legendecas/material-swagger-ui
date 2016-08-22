@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   padding-left: 2vw;
+  justify-content: space-between;
 }
 
 .entrypoint-method-name {
@@ -31,6 +32,10 @@
 
 .entrypoint-delete {
   background-color: #FF5722;
+}
+
+.entrypoint-deprecated {
+  background-color: gray !important;
 }
 
 .card-content > .entrypoint-info {
