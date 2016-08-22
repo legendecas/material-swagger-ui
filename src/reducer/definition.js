@@ -12,6 +12,10 @@ export default function definition(state = initialState, action) {
         ..._.flatMap(_.get(newState, 'paths', {}),
           pathObject => _.flatMap(pathObject, methodObject => methodObject.tags)),
       ]);
+      newState.entrypoints = _.flatMap(_.get(newState, 'paths', {}), (pathObject, path) =>
+        _.map(pathObject, (methodObject, method) => ({
+          path, method, operation: methodObject,
+        })));
       break;
     default:
       break;

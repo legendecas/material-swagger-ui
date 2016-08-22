@@ -1,36 +1,46 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import marked from 'marked';
+import _ from 'lodash';
 import Model from './Model';
 
-const Request = () => (
-  <div>
-    <span className="blue-text">Request</span>
-    <div
-      className="grey-text"
-      dangerouslySetInnerHTML={{
-        __html: marked('Request Description with GFM Syntax support'),
-      }}
-    />
-    <table className="highlight centered responsive-table">
-      <thead>
-        <tr>
-          <th data-field="name">Parameter Name</th>
-          <th data-field="description">Description</th>
-          <th data-field="parameter-type">Parameter Type</th>
-          <th data-field="data-type">Data Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>id</td>
-          <td>Object Id</td>
-          <td>path</td>
-          <td>string</td>
-        </tr>
-      </tbody>
-    </table>
-    <Model/>
-  </div>
-);
+const Request = ({ parameters = [] }) => {
+  const body = _.first(parameters.filter(param => param.in === 'body'));
+  const params = parameters.filter(param => param.in !== 'body');
+
+  return (
+    <div>
+      <span className="blue-text">Request</span>
+      {
+        params.length > 0 ? <table className="highlight centered responsive-table">
+          <thead>
+            <tr>
+              <th data-field="name">Parameter Name</th>
+              <th data-field="description">Description</th>
+              <th data-field="parameter-type">Parameter Type</th>
+              <th data-field="data-type">Data Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {params.map(param =>
+              <tr key={params.name + param.description}>
+                <td>{param.name}</td>
+                <td>{param.description}</td>
+                <td>{param.in}</td>
+                <td style={{ fontWeight: param.required ? 'bold' : 'normal' }}>
+                  {param.type}{param.required ? '(required)' : null}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table> : null
+      }
+      { body ? <Model schema={body.schema}/> : null}
+    </div>
+  );
+};
+
+Request.propTypes = {
+  parameters: PropTypes.array.isRequired,
+};
 
 export default Request;

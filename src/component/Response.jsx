@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import marked from 'marked';
 import Model from './Model';
 
-const Response = () => (
-  <div>
-    <span className="blue-text">Response</span>
-    <div
-      className="grey-text"
-      dangerouslySetInnerHTML={{
-        __html: marked('Request Description with GFM Syntax support'),
-      }}
-    />
-    <Model/>
-  </div>
-);
+const Response = ({ status, response }) => {
+  const { description = '', schema, headers, examples } = response;
+  return (
+    <div>
+      <span className="blue-text">Response {status}</span>
+      <div
+        className="grey-text"
+        dangerouslySetInnerHTML={{
+          __html: marked(description),
+        }}
+      />
+      <Model schema={schema} examples={examples}/>
+    </div>
+  );
+};
+
+Response.propTypes = {
+  status: PropTypes.string.isRequired,
+  response: PropTypes.object.isRequired,
+};
 
 export default Response;

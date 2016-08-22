@@ -7,8 +7,8 @@ import action from './action/definition';
 import ConnectedHeader from './container/ConnectedHeader';
 import ApiDescriptionContainer from './container/ApiDescriptionContainer';
 import Footer from './component/Footer';
-import EntrypointCard from './component/EntrypointCard';
 import TagListContainer from './container/TagListContainer';
+import TaggedEntrypoints from './container/TaggedEntrypoints';
 
 const style = StyleSheet.create({
   app: {
@@ -40,11 +40,9 @@ const App = () => (
         <div className={`row ${css(style.apiContent)}`}>
           <TagListContainer/>
           <div className={`col s12 m9 l9 offset-l1 ${css(style.entrypointList)}`}>
-            <EntrypointCard revealed/>
-            <EntrypointCard method={'post'}/>
+            <TaggedEntrypoints/>
           </div>
         </div>
-        <div style={{ height: '1000vh' }}/>
       </main>
       <Footer/>
     </app>
