@@ -7,6 +7,7 @@ const ConnectedHeader = connect(
     title: _.get(state.definition, 'info.title', ''),
     baseUrl: _.get(state.definition, 'basePath', ''),
     apiVersion: _.get(state.definition, 'info.version', ''),
+    host: _.get(state.definition, 'host'),
   }),
   () => ({})
 )(Header);

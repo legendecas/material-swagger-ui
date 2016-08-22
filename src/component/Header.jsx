@@ -4,9 +4,20 @@ import { StyleSheet, css } from 'aphrodite';
 const style = StyleSheet.create({
   header: {
     background: '#1E88E5',
-    height: '96px',
+    minHeight: '96px',
     display: 'flex',
     alignItems: 'center',
+  },
+  headerTitle: {
+    '@media only screen and (max-width: 601px)': {
+      fontSize: '1.72rem',
+    },
+    '@media only screen and (min-width: 993px)': {
+      fontSize: '2.92rem',
+    },
+    '@media only screen and (min-width: 601px) and (max-width: 993px)': {
+      fontSize: '2.4rem',
+    },
   },
   container: {
     paddingBottom: '6px',
@@ -18,20 +29,24 @@ const style = StyleSheet.create({
   apiInfo: {
     alignSelf: 'flex-end',
     display: 'flex',
+    flexDirection: 'column-reverse',
+    alignItems: 'flex-end',
     justifyContent: 'flex-end',
+    '@media only screen and (max-width: 601px)': {
+      alignItems: 'flex-start',
+    },
   },
 });
 
-const Header = ({ title, baseUrl, apiVersion }) => (
+const Header = ({ title, baseUrl, apiVersion, host }) => (
   <header className={css(style.header)}>
     <div className={`container ${css(style.container)}`}>
-      <h3 className="white-text ">
+      <h3 className={`white-text ${css(style.headerTitle)}`}>
         {title}
       </h3>
       <div className={css(style.apiInfo)}>
-        {
-          baseUrl ? <span className="white-text">Base Url: {baseUrl}</span> : null
-        }
+        {host ? <span className="white-text">Host: {host}</span> : null}
+        {baseUrl ? <span className="white-text">Base Url: {baseUrl}</span> : null}
         {
           apiVersion ?
             <span className="white-text" style={{ marginLeft: '8px' }}>
@@ -48,6 +63,7 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
   baseUrl: PropTypes.string,
   apiVersion: PropTypes.string,
+  host: PropTypes.string,
 };
 
 export default Header;
