@@ -7,7 +7,7 @@ import action from './action/definition';
 import ConnectedHeader from './container/ConnectedHeader';
 import ApiDescriptionContainer from './container/ApiDescriptionContainer';
 import Footer from './component/Footer';
-import TagListContainer from './container/TagListContainer';
+import ConnectedDrawer from './container/ConnectedDrawer';
 import TaggedEntrypoints from './container/TaggedEntrypoints';
 
 const style = StyleSheet.create({
@@ -24,8 +24,6 @@ const style = StyleSheet.create({
   },
   apiContent: {
     marginTop: '10vh',
-  },
-  entrypointList: {
     display: 'flex',
     flexDirection: 'column',
   },
@@ -35,13 +33,11 @@ const App = () => (
   <Provider store={store}>
     <app className={css(style.app)}>
       <ConnectedHeader/>
+      <ConnectedDrawer/>
       <main className={`container ${css(style.main)}`}>
         <ApiDescriptionContainer/>
-        <div className={`row ${css(style.apiContent)}`}>
-          <TagListContainer/>
-          <div className={`col s12 m9 l9 offset-l1 ${css(style.entrypointList)}`}>
-            <TaggedEntrypoints/>
-          </div>
+        <div className={css(style.apiContent)}>
+          <TaggedEntrypoints/>
         </div>
       </main>
       <Footer/>

@@ -22,17 +22,24 @@ export default class EntrypointCard extends Component {
     const { method, path, operation } = this.props;
     const { description = '', summary, parameters = [], responses = {}, security = [] } = operation;
     const { revealed } = this.state;
-    const href = method.toUpperCase() + path;
+    const href = _.kebabCase(method + path);
 
     return (
-      <entrypoint>
+      <entrypoint
+        id={href}
+        name={href}
+        className="scrollspy"
+        ref={ref => $(document).ready(() => {
+          $(ref).scrollSpy({ scrollOffset: 50 });
+        })}
+      >
         <div className="card">
           <div
             className={`entrypoint-method entrypoint-${method} ${classNames({
               'entrypoint-deprecated': operation.deprecated,
             })}`}
           >
-            <a name={href} href={`#${href}`}>
+            <a href={`#${href}`}>
               <span className="entrypoint-method-name white-text">{method.toUpperCase()}</span>
               <span className="entrypoint-method-path white-text">{path}</span>
             </a>

@@ -1,9 +1,0 @@
-taglist > ul > li > a {
-  color: #757575;
-  float: right;
-}
-
-taglist > ul > li > a[class*=active] {
-  font-size: 20px;
-  color: rgba(0, 0, 0, 0.87);
-}
