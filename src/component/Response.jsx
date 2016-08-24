@@ -1,12 +1,20 @@
 import React, { PropTypes } from 'react';
 import marked from 'marked';
+import classNames from 'classnames';
 import Model from './Model';
 
 const Response = ({ status, response }) => {
-  const { description = '', schema, headers, examples } = response;
+  const { description = '', schema, examples } = response;
   return (
     <div>
-      <span className="blue-text">Response {status}</span>
+      <span className="blue-text">Response </span>
+      <span
+        className={classNames({
+          'blue-text': status === 'default',
+          'teal-text': Number(status) < 400,
+          'deep-orange-text': Number(status) >= 400,
+        })}
+      >{status}</span>
       <div
         className="grey-text"
         dangerouslySetInnerHTML={{
