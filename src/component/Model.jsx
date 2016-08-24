@@ -34,22 +34,27 @@ export default class Model extends Component {
   }
 
   render() {
-    const model = this.state.modelTab === 'schema' ?
-      this.props.schema :
-      this.props.examples[this.state.mimeType];
+    const model = this.state.modelTab === 'schema'
+      ? this.props.schema
+      : this.props.examples && this.props.examples[this.state.mimeType];
     const { mimeTypes } = this.state;
 
     return (
       <div className="model-container">
         <div className="model-button-container">
           <a
-            className={classNames({ 'grey-text text-darken-1': this.state.modelTab !== 'schema' })}
+            className={classNames({
+              'blue-grey-text text-darken-1': this.state.modelTab !== 'schema',
+            })}
             onClick={() => this.setTab('schema')}
           >Model Schema</a>
           <div className="model-button-separator"/>
           <a
-            className={classNames({ 'grey-text text-darken-1': this.state.modelTab !== 'example' })}
-            onClick={() => this.setTab('example')}
+            className={classNames({
+              'blue-grey-text text-darken-1': this.state.modelTab !== 'example',
+              disabled: !this.props.examples,
+            })}
+            onClick={() => this.props.examples && this.setTab('example')}
           >Example</a>
           <div
             className={`input-field ${classNames({ hide: this.state.modelTab !== 'example' })}`}
