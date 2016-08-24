@@ -9,14 +9,11 @@ const style = StyleSheet.create({
     alignItems: 'center',
   },
   headerTitle: {
-    '@media only screen and (max-width: 601px)': {
-      fontSize: '1.72rem',
+    '@media only screen and (max-width: 992px)': {
+      fontSize: '36px',
     },
     '@media only screen and (min-width: 993px)': {
-      fontSize: '2.92rem',
-    },
-    '@media only screen and (min-width: 601px) and (max-width: 993px)': {
-      fontSize: '2.4rem',
+      fontSize: '48px',
     },
   },
   container: {
@@ -27,7 +24,6 @@ const style = StyleSheet.create({
     justifyContent: 'space-between',
   },
   apiInfo: {
-    alignSelf: 'flex-end',
     display: 'flex',
     flexDirection: 'column-reverse',
     alignItems: 'flex-end',
@@ -41,17 +37,15 @@ const style = StyleSheet.create({
 const Header = ({ title, baseUrl, apiVersion, host }) => (
   <header className={css(style.header)}>
     <div className={`container ${css(style.container)}`}>
-      <h3 className={`white-text ${css(style.headerTitle)}`}>
+      <h1 className={`flow-text white-text ${css(style.headerTitle)}`}>
         {title}
-      </h3>
+      </h1>
       <div className={css(style.apiInfo)}>
         {host ? <span className="white-text">Host: {host}</span> : null}
         {baseUrl ? <span className="white-text">Base Url: {baseUrl}</span> : null}
         {
-          apiVersion ?
-            <span className="white-text" style={{ marginLeft: '8px' }}>
-              API Version: {apiVersion}
-            </span>
+          apiVersion
+            ? <span className="white-text">API Version: {apiVersion}</span>
             : null
         }
       </div>
