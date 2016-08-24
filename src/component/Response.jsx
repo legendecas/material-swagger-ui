@@ -20,7 +20,15 @@ const Response = ({ status, response }) => {
 
 Response.propTypes = {
   status: PropTypes.string.isRequired,
-  response: PropTypes.object.isRequired,
+  response: PropTypes.shape({
+    description: PropTypes.string.isRequired,
+    schema: PropTypes.object,
+    headers: PropTypes.objectOf(PropTypes.shape({
+      description: PropTypes.string,
+      type: PropTypes.string,
+    })),
+    examples: PropTypes.object,
+  }).isRequired,
 };
 
 export default Response;

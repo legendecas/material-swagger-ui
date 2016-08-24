@@ -36,7 +36,7 @@ const SecurityChips = ({ security }) => {
 };
 
 SecurityChips.propTypes = {
-  security: PropTypes.arrayOf(PropTypes.object).isRequired,
+  security: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string))).isRequired,
 };
 
 export default SecurityChips;

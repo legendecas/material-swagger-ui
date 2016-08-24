@@ -40,7 +40,12 @@ const Request = ({ parameters = [] }) => {
 };
 
 Request.propTypes = {
-  parameters: PropTypes.array.isRequired,
+  parameters: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    in: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    required: PropTypes.bool,
+  })).isRequired,
 };
 
 export default Request;

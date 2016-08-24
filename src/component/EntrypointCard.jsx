@@ -11,7 +11,13 @@ export default class EntrypointCard extends Component {
   static propTypes = {
     method: PropTypes.string.isRequired,
     path: PropTypes.string.isRequired,
-    operation: PropTypes.object.isRequired,
+    operation: PropTypes.shape({
+      description: PropTypes.string,
+      summary: PropTypes.string,
+      parameters: PropTypes.array,
+      responses: PropTypes.object,
+      security: PropTypes.array,
+    }).isRequired,
   };
 
   state = {
