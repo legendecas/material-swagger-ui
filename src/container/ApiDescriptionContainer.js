@@ -4,7 +4,7 @@ import ApiDescriptionField from '../component/ApiDescriptionField';
 
 const ApiDescriptionContainer = connect(
   state => ({
-    description: _.get(state.definition, 'info.description', ''),
+    description: _.get(state.definition.store, 'info.description', ''),
   }),
   () => ({})
 )(ApiDescriptionField);
