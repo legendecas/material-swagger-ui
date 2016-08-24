@@ -15,8 +15,11 @@ marked.setOptions({
 
 const ApiDescriptionField = ({ description = '' }) => (
   <article
-    className="markdown-body"
+    id="api-description"
+    name="api-description"
+    className="markdown-body scrollspy"
     dangerouslySetInnerHTML={{ __html: marked(description) }}
+    ref={ref => $(document).ready(() => $(ref).scrollSpy())}
   />
 );
 

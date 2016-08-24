@@ -8,6 +8,6 @@ header, main, footer {
   }
 }
 
-ul.side-nav > li > a.collapsible-header {
+ul.side-nav > li > a {
   font-weight: bold;
 }

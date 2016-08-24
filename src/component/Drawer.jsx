@@ -20,6 +20,9 @@ const Drawer = ({ tags }) => (
     id="slide-out"
     className={`side-nav fixed collapsible collapsible-accordion ${css(style.taglist)}`}
   >
+    <li>
+      <a className="waves-effect waves-teal" href="#api-description">Api Description</a>
+    </li>
     {tags.map(tag =>
       <li key={tag.name}>
         <a className="collapsible-header waves-effect waves-teal" href={`#${tag.name}`}>
