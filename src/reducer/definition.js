@@ -55,7 +55,7 @@ function defineEntrypoints(entrypoints, definitions) {
     ...entrypoint,
     operation: {
       ...entrypoint.operation,
-      parameters: entrypoint.operation.parameters.map(param => {
+      parameters: _.map(entrypoint.operation.parameters, param => {
         if (param.$ref) {
           return definitions(param.$ref);
         }
