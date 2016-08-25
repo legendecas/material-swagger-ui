@@ -27,6 +27,7 @@ const Drawer = ({ tags }) => (
       <li key={tag.name}>
         <a className="collapsible-header waves-effect waves-teal" href={`#${tag.name}`}>
           {tag.name}
+          <span className="grey-text">{_.truncate(tag.description)}</span>
         </a>
         <div className="collapsible-body">
           <ul>
@@ -50,6 +51,7 @@ const Drawer = ({ tags }) => (
 Drawer.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
+    description: PropTypes.string,
     entrypoints: PropTypes.arrayOf(PropTypes.shape({
       path: PropTypes.string,
       method: PropTypes.string,
