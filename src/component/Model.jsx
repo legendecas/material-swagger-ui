@@ -4,6 +4,24 @@ import hljs from 'highlight.js';
 import _ from 'lodash';
 import './Model.css';
 
+function formatSchema(schema, name = '') {
+  switch (schema.type) {
+    case 'object':
+      return `${name ? `${name}: ` : ''}{\n${
+        _.map(schema.properties,
+          (property, key) => formatSchema(property, key).replace(/\n/g, '\n  '))
+          .map(str => `  ${str},`)
+          .join('\n')
+        }\n}`;
+    case 'array':
+      return `${name ? `${name}: ` : ''}[\n  ${
+        formatSchema(schema.items, 'items').replace(/\n/g, '\n  ')
+        }\n]`;
+    default:
+      return `${name}: (${schema.type})${schema.description ? ` ${schema.description}` : ''}`;
+  }
+}
+
 export default class Model extends Component {
   static propTypes = {
     schema: PropTypes.object,
@@ -34,9 +52,6 @@ export default class Model extends Component {
   }
 
   render() {
-    const model = this.state.modelTab === 'schema'
-      ? this.props.schema
-      : this.props.examples && this.props.examples[this.state.mimeType];
     const { mimeTypes } = this.state;
 
     return (
@@ -68,7 +83,11 @@ export default class Model extends Component {
         </div>
         <pre className="model-code-block">
           <code ref={ref => this.codeBlock = ref}>
-            {JSON.stringify(model, null, 2)}
+            {this.state.modelTab === 'schema'
+              ? formatSchema(this.props.schema)
+              : JSON.stringify(this.props.examples && this.props.examples[this.state.mimeType],
+              null, 2)
+            }
           </code>
         </pre>
       </div>
