@@ -1,7 +1,9 @@
 
 # Material Swagger UI
 
+> This repo is still in very pre-alpha stage
 
+![Screenshot](screenshot-1.png)
 
 ## LICENSE
 
