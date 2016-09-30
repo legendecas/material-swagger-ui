@@ -16,3 +16,11 @@ ul.side-nav > li > a > span {
   font-weight: normal;
   margin-left: 8px;
 }
+
+.side-nav li .collapsible-body ul > .active {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.side-nav li .collapsible-body ul > .active a {
+  color: #000 !important;
+}
