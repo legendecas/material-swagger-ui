@@ -24,10 +24,27 @@ const Request = ({ parameters = [] }) => {
             {params.map(param =>
               <tr key={params.name + param.description}>
                 <td>{param.name}</td>
-                <td>{param.description}</td>
+                <td
+                  dangerouslySetInnerHTML={{
+                    __html: marked(param.description),
+                  }}
+                />
                 <td>{param.in}</td>
                 <td style={{ fontWeight: param.required ? 'bold' : 'normal' }}>
                   {param.type}{param.required ? '(required)' : null}
+                  {
+                    param.enum ?
+                      (<div className="input-field">
+                        <select
+                          defaultValue=""
+                          ref={ref => $(document).ready(() => $(ref).material_select())}
+                        >
+                          <option value="" disabled>Enum type</option>
+                          {param.enum.map(type => <option key={type} value={type}>{type}</option>)}
+                        </select>
+                      </div>)
+                      : null
+                  }
                 </td>
               </tr>
             )}
