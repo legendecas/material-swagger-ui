@@ -18,7 +18,11 @@ function formatSchema(schema, name = '') {
         formatSchema(schema.items, 'items').replace(/\n/g, '\n  ')
         }\n]`;
     default:
-      return `${name}: (${schema.type})${schema.description ? ` ${schema.description}` : ''}`;
+      return `${name}: (${schema.type}${
+        schema.enum ? `, allow: ${schema.enum.map(type => String(type)).join(', ')}` : ''
+        })${
+        schema.description ? ` ${schema.description}` : ''
+      }`;
   }
 }
 
