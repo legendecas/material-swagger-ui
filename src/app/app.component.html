@@ -1,3 +1,17 @@
-<h1>
-  {{title}}
-</h1>
+<md-toolbar [color]="'primary'" class="app-toolbar">
+  <span>{{title}}</span>
+</md-toolbar>
+
+<div class="container app-content">
+  <app-info-card></app-info-card>
+</div>
+
+<footer>
+    <span>Powered with ❤️ by
+      <a href="https://github.com/legendecas/material-swagger-ui"
+         rel="noopener noreferrer"
+         target="_blank"
+         class="blue-grey-text text-darken-4"
+      > material-swagger-ui</a>.
+    </span>
+</footer>

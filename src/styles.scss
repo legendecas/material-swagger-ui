@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+$enable-flex: true;
+$enable-grid-classes: true;
+
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/normalize";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/grid";
+
 * {
   margin: 0;
   padding: 0;

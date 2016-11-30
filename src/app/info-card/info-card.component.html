@@ -1,0 +1,23 @@
+<md-card>
+  <md-card-subtitle>Version: {{info?.version}}</md-card-subtitle>
+  <md-card-title>{{info?.title}}</md-card-title>
+  <md-card-content>
+    <div *ngIf="info?.license">
+      <span>License: {{info.license.name}}</span>
+    </div>
+    <div *ngIf="info?.termOfService">
+      <span>Term Of Service: {{info.termOfService}}</span>
+    </div>
+    <div *ngIf="info?.contact">
+      <span>Contact: </span>
+      <span *ngIf="info.contact.email && info.contact.name">
+        {{info.contact.name}} <{{info.contact.email}}>
+      </span>
+      <span *ngIf="info.contact.email && !info.contact.name">
+        {{info.contact.email}}
+      </span>
+    </div>
+
+    <article class="markdown-body" [innerHTML]="info?.description | marked"></article>
+  </md-card-content>
+</md-card>
