@@ -1,13 +1,45 @@
 @import "material-theme";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+md-sidenav {
+  width: 80%;
+  max-width: 20rem;
+
+  @include media-breakpoint-only(sm) {
+    width: 35%;
+  }
+
+  @include media-breakpoint-between(md, lg) {
+    width: 25%;
+  }
+
+  @include media-breakpoint-up(xl) {
+    width: 20%;
+  }
+}
+
 
 .app-toolbar {
   position: fixed;
-  z-index: 10;
+  z-index: 1;
   top: 0;
+
+  .menu-btn {
+    color: white !important;
+  }
+
+  span.fill-space {
+    flex: 1 1 auto;
+  }
+
+  h6.info {
+    margin-right: 0.5rem;
+  }
 }
 
 .app-content {
-  margin-top: 80px;
+  margin-top: 5rem;
 }
 
 footer {

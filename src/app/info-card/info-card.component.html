@@ -1,23 +1,24 @@
-<md-card>
-  <md-card-subtitle>Version: {{info?.version}}</md-card-subtitle>
-  <md-card-title>{{info?.title}}</md-card-title>
-  <md-card-content>
-    <div *ngIf="info?.license">
-      <span>License: {{info.license.name}}</span>
-    </div>
-    <div *ngIf="info?.termOfService">
-      <span>Term Of Service: {{info.termOfService}}</span>
-    </div>
-    <div *ngIf="info?.contact">
-      <span>Contact: </span>
+<div class="container">
+  <dl class="row">
+    <dt *ngIf="info" class="col-sm-2">Version</dt>
+    <dd *ngIf="info" class="col-sm-10">{{info.version}}</dd>
+
+    <dt *ngIf="info?.license" class="col-sm-2">License</dt>
+    <dd *ngIf="info?.license" class="col-sm-10">{{info.license.name}}</dd>
+
+    <dt *ngIf="info?.termOfService" class="col-sm-2">Term Of Service</dt>
+    <dd *ngIf="info?.termOfService" class="col-sm-10">{{info.termOfService}}</dd>
+
+    <dt *ngIf="info?.contact" class="col-sm-2">Contact</dt>
+    <dd *ngIf="info?.contact" class="col-sm-10">
       <span *ngIf="info.contact.email && info.contact.name">
         {{info.contact.name}} <{{info.contact.email}}>
       </span>
       <span *ngIf="info.contact.email && !info.contact.name">
         {{info.contact.email}}
       </span>
-    </div>
+    </dd>
+  </dl>
 
-    <article class="markdown-body" [innerHTML]="info?.description | marked"></article>
-  </md-card-content>
-</md-card>
+  <article class="markdown-body" [innerHTML]="info?.description | marked"></article>
+</div>

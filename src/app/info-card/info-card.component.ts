@@ -11,7 +11,8 @@ export class InfoCardComponent implements OnInit {
 
   info: InfoObject;
 
-  constructor(private apiDefinition: ApiDefinitionService) { }
+  constructor(private apiDefinition: ApiDefinitionService) {
+  }
 
   ngOnInit() {
     this.apiDefinition.definitionSubject.subscribe(

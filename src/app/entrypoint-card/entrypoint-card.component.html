@@ -1,0 +1,64 @@
+<md-card>
+  <div entrypoint-method [ngClass]="entrypoint.method">
+    <span class="method">{{entrypoint.method.toUpperCase()}}</span>
+    <span class="path">{{entrypoint.path}}</span>
+  </div>
+
+  <div entrypoint-summary class="container">
+    <p>{{entrypoint.summary}}</p>
+    <p *ngIf="entrypoint.description"
+       [innerHTML]="entrypoint.description | marked"
+       class="markdown-body text-muted"></p>
+
+    <div class="row flex-items-xs-left">
+      <p class="col-xs-12 col-md-11">security: {{entrypoint.security | json}}</p>
+      <button type="button" class="btn btn-primary col-xs-1" (click)="toggleDetails()">
+        DETAILS
+      </button>
+    </div>
+  </div>
+
+  <div entrypoint-details class="container" *ngIf="showDetails">
+    <p class="h6">Request</p>
+    <div *ngIf="parameters.length > 0">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Data Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let parameter of parameters">
+              <th>{{parameter.name}}</th>
+              <th>{{parameter.description}}</th>
+              <th>{{parameter.type}}</th>
+              <th>{{parameter.schema | prettyJson}}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div>
+      <ul>
+        <li *ngFor="let res of responses">
+          <div>
+            <span *ngIf="res.name != 'default'" class="h6">Response </span>
+            <span [class.text-warning]="res.name >= 400"
+                  [class.text-success]="res.name < 300">{{res.name}}</span>
+          </div>
+          <p>{{res.response.description}}</p>
+          <div *ngIf="res.response.schema">
+            <pre><code>{{res.response.schema | prettyJson}}</code></pre>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</md-card>

@@ -1,0 +1,63 @@
+$method-colors: (
+  head: #512DA8,
+  get: #0288D1,
+  post: #00796B,
+  put: #F57C00,
+  delete: #D32F2F,
+);
+
+$deprecated-color: grey;
+
+@each $method, $method-color in $method-colors {
+  .#{$method}[entrypoint-method] {
+    background-color: $method-color;
+  }
+}
+
+[entrypoint-method]:first-child {
+  margin-top: -1.5rem;
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+[entrypoint-method] {
+  color: white;
+  height: 2.5rem;
+  width: calc(100% + 3rem);
+  margin: 0 -1.5rem 1rem -1.5rem;
+  padding: 0 1rem;
+
+  @media only screen and (max-width: 600px) {
+    width: calc(100% + 2rem);
+    margin: 0 -1rem 1rem -1rem;
+  }
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .method {
+    margin-right: 1rem;
+    font-size: 1rem;
+  }
+
+  .path {
+    font-size: 1rem;
+  }
+}
+
+[entrypoint-summary] {
+}
+
+[entrypoint-details] {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid hsla(0, 0%, 63%, .2);
+
+  .table > thead > tr > th {
+    border-top: none;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+}
