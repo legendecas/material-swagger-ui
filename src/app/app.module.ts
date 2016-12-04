@@ -11,6 +11,7 @@ import { SchemaValidationService } from './schema-validation.service';
 import { PrettyJsonPipe } from './pretty-json.pipe';
 import { InfoCardComponent } from './info-card/info-card.component';
 import { MarkedPipe } from './marked.pipe';
+import { DrawerComponent } from './drawer/drawer.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MarkedPipe } from './marked.pipe';
     PrettyJsonPipe,
     InfoCardComponent,
     MarkedPipe,
+    DrawerComponent,
   ],
   imports: [
     BrowserModule,

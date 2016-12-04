@@ -1,0 +1,7 @@
+.drawer {
+  top: 4rem;
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
+}

@@ -2,28 +2,13 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
-md-sidenav {
-  width: 80%;
-  max-width: 20rem;
-
-  @include media-breakpoint-only(sm) {
-    width: 35%;
-  }
-
-  @include media-breakpoint-between(md, lg) {
-    width: 25%;
-  }
-
-  @include media-breakpoint-up(xl) {
-    width: 20%;
-  }
-}
-
+$toolbar-height: 4rem;
 
 .app-toolbar {
   position: fixed;
   z-index: 1;
   top: 0;
+  height: $toolbar-height;
 
   .menu-btn {
     color: white !important;
@@ -38,8 +23,14 @@ md-sidenav {
   }
 }
 
+.app-content-root {
+  margin-top: $toolbar-height;
+  height: calc(100vh - #{$toolbar-height});
+  overflow-y: auto;
+}
+
 .app-content {
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 
 footer {
