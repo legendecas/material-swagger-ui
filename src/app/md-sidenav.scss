@@ -1,0 +1,19 @@
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+md-sidenav {
+  width: 80vw;
+  max-width: 25rem;
+
+  @include media-breakpoint-only(sm) {
+    width: 45vw;
+  }
+
+  @include media-breakpoint-between(md, lg) {
+    width: 35vw;
+  }
+
+  @include media-breakpoint-up(xl) {
+    width: 25vw;
+  }
+}
