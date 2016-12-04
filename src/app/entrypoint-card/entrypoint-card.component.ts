@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Entrypoint } from '../entrypoint';
-import { ParameterObject, ResponseObject } from '../api-definition';
+import { IParameterObject, IResponseObject } from '../api-definition';
 import { ApiDefinitionService } from '../api-definition.service';
 
 @Component({
@@ -12,8 +12,8 @@ export class EntrypointCardComponent implements OnInit {
 
   @Input() entrypoint: Entrypoint;
 
-  parameters: ParameterObject[] = [];
-  responses: {name: string, response: ResponseObject}[] = [];
+  parameters: IParameterObject[] = [];
+  responses: {name: string, response: IResponseObject}[] = [];
   errors: any[] = [];
 
   showDetails = false;

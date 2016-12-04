@@ -1,15 +1,15 @@
 import {
-  OperationObject,
-  ParameterObject,
-  ReferenceObject,
-  ResponseObject
+  IOperationObject,
+  IParameterObject,
+  IReferenceObject,
+  IResponseObject
 } from './api-definition';
 import { Observable } from 'rxjs/Rx';
 import { ApiDefinitionService } from './api-definition.service';
 
 export class Entrypoint {
 
-  constructor(public path, public method, private operation: OperationObject) {
+  constructor(public path, public method, private operation: IOperationObject) {
   }
 
   get tags(): string[] {
@@ -52,12 +52,12 @@ export class Entrypoint {
     return this.operation.security;
   }
 
-  resolveParameters(apiDefinitionService: ApiDefinitionService): Observable<ParameterObject> {
+  resolveParameters(apiDefinitionService: ApiDefinitionService): Observable<IParameterObject> {
     return Observable.from(this.operation.parameters.map(parameter => {
-      if ((parameter as ReferenceObject).$ref) {
-        return apiDefinitionService.resolveReference((parameter as ReferenceObject).$ref);
+      if ((parameter as IReferenceObject).$ref) {
+        return apiDefinitionService.resolveReference((parameter as IReferenceObject).$ref);
       } else {
-        return Observable.of(parameter as ParameterObject);
+        return Observable.of(parameter as IParameterObject);
       }
     }))
       .concatAll()
@@ -74,12 +74,12 @@ export class Entrypoint {
       });
   }
 
-  resolveResponses(apiDefinitionService: ApiDefinitionService): Observable<[string, ResponseObject]> {
+  resolveResponses(apiDefinitionService: ApiDefinitionService): Observable<[string, IResponseObject]> {
     return Observable.from(Object.keys(this.operation.responses)
       .map(responseName => {
         const responseObject = this.operation.responses[responseName];
-        if ((responseObject as ReferenceObject).$ref) {
-          return apiDefinitionService.resolveReference((responseObject as ReferenceObject).$ref)
+        if ((responseObject as IReferenceObject).$ref) {
+          return apiDefinitionService.resolveReference((responseObject as IReferenceObject).$ref)
             .map(resObj => [responseName, resObj]);
         } else {
           return Observable.of([responseName, responseObject]);

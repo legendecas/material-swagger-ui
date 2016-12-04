@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiDefinitionService } from '../api-definition.service';
-import { InfoObject } from '../api-definition';
+import { IInfoObject } from '../api-definition';
 
 @Component({
   selector: 'app-info-card',
@@ -9,7 +9,7 @@ import { InfoObject } from '../api-definition';
 })
 export class InfoCardComponent implements OnInit {
 
-  info: InfoObject;
+  info: IInfoObject;
 
   constructor(private apiDefinition: ApiDefinitionService) {
   }

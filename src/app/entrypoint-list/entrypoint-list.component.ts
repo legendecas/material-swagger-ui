@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiDefinitionService } from '../api-definition.service';
-import { TagObject } from '../api-definition';
+import { ITagObject } from '../api-definition';
 import { Entrypoint } from '../entrypoint';
 
 @Component({
@@ -10,7 +10,7 @@ import { Entrypoint } from '../entrypoint';
 })
 export class EntrypointListComponent implements OnInit {
   entrypoints: Entrypoint[] = [];
-  tags: TagObject[] = [];
+  tags: ITagObject[] = [];
 
   constructor(private apiDefinition: ApiDefinitionService) {
   }

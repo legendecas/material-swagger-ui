@@ -3,14 +3,14 @@ import { Http } from '@angular/http';
 import { Observable, BehaviorSubject } from 'rxjs/Rx';
 import * as Url from 'url';
 import { uniq, uniqBy } from 'lodash';
-import { ApiDefinition } from './api-definition';
+import { IApiDefinition, ITagObject } from './api-definition';
 import { Entrypoint } from './entrypoint';
 import { SchemaValidationService } from './schema-validation.service';
 
 @Injectable()
 export class ApiDefinitionService {
   private _url: string;
-  private subject = new BehaviorSubject<ApiDefinition>(null);
+  private subject = new BehaviorSubject<IApiDefinition>(null);
   definitionSubject = this.subject.filter(definition => !!definition);
 
   constructor(private http: Http, private validator: SchemaValidationService) {
@@ -47,18 +47,18 @@ export class ApiDefinitionService {
   resolveReference($ref: string): Observable<any> {
     const uri = Url.parse($ref);
     const paths = uri.hash.slice(1).split('/').filter(key => !!key);
-    return this.definitionSubject
+    return this.definitionSubject.first()
       .pluck(...paths);
   }
 
-  resolveTags(): Observable<string> {
+  resolveTags(): Observable<ITagObject> {
     const tagsResolver = this.resolveEntrypoints()
       .map(entrypoint => entrypoint.tags)
       .toArray()
       .map(array => array.reduce((arr, thing) => arr.concat(thing), []))
       .map(tags => uniq(tags))
       .map(tags => tags.map(tag => ({ name: tag })));
-    return this.definitionSubject
+    return this.definitionSubject.first()
       .map(swagger => swagger.tags)
       .concatMap(tags => tagsResolver.map(partialTagObjects => tags.concat(tags)))
       .map(t => uniqBy(t, 'name'))

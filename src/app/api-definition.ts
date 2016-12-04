@@ -1,22 +1,22 @@
-export interface ApiDefinition {
+export interface IApiDefinition {
   swagger: string;
-  info: InfoObject;
+  info: IInfoObject;
   host?: string;
   basePath?: string;
   schemes?: string[];
   consumes?: string[];
   produces?: string[];
-  paths: {[key: string]: PathItemObject};
-  definitions: {[key: string]: SchemaObject};
-  parameters: {[key: string]: ParameterObject};
-  responses: {[key: string]: ResponseObject};
-  securityDefinitions: {[key: string]: SecuritySchemeObject};
-  security: SecurityRequirementObject[];
-  tags: TagObject[];
-  externalDocs: ExternalDocumentationObject;
+  paths: {[key: string]: IPathItemObject};
+  definitions: {[key: string]: ISchemaObject};
+  parameters: {[key: string]: IParameterObject};
+  responses: {[key: string]: IResponseObject};
+  securityDefinitions: {[key: string]: ISecuritySchemeObject};
+  security: ISecurityRequirementObject[];
+  tags: ITagObject[];
+  externalDocs: IExternalDocumentationObject;
 }
 
-export interface InfoObject {
+export interface IInfoObject {
   title: string;
   description?: string;
   termOfService?: string;
@@ -32,97 +32,52 @@ export interface InfoObject {
   version: string;
 }
 
-export interface PathItemObject {
+export interface IPathItemObject {
   $ref?: string;
-  get?: OperationObject;
-  put?: OperationObject;
-  post?: OperationObject;
-  delete?: OperationObject;
-  options?: OperationObject;
-  head?: OperationObject;
-  patch?: OperationObject;
-  parameters?: (ParameterObject | ReferenceObject)[];
+  get?: IOperationObject;
+  put?: IOperationObject;
+  post?: IOperationObject;
+  delete?: IOperationObject;
+  options?: IOperationObject;
+  head?: IOperationObject;
+  patch?: IOperationObject;
+  parameters?: (IParameterObject | IReferenceObject)[];
 }
 
-export interface OperationObject {
+export interface IOperationObject {
   tags?: string[];
   summary?: string;
   description?: string;
-  externalDocs?: ExternalDocumentationObject;
+  externalDocs?: IExternalDocumentationObject;
   operationId?: string;
   consumes?: string[];
   produces?: string[];
-  parameters?: (ParameterObject | ReferenceObject)[];
-  responses: ResponsesObject;
+  parameters?: (IParameterObject | IReferenceObject)[];
+  responses: IResponsesObject;
   schemes?: string[];
   deprecated?: boolean;
-  security?: SecurityRequirementObject[];
+  security?: ISecurityRequirementObject[];
 }
 
-export interface ParameterObject {
-  name: string;
-  in: string;
-  description?: string;
-  required?: boolean;
-  schema?: SchemaObject | ReferenceObject;
-  type?: string;
-  format?: string;
-  allowEmptyValue?: boolean;
-  items?: ItemsObject;
-  collectionFormat?: string;
-  default?: any;
-  maximum?: number;
-  exclusiveMaximum?: boolean;
-  minimum?: number;
-  exclusiveMinimum?: boolean;
-  maxLength?: number;
-  minLength?: number;
-  pattern?: string;
-  maxItems?: number;
-  minItems?: number;
-  uniqueItems?: boolean;
-  enum?: any[];
-  multipleOf?: number;
-}
-
-export interface ReferenceObject {
+export interface IReferenceObject {
   $ref: string;
 }
 
-export interface ResponsesObject {
-  default: (ResponseObject | ReferenceObject);
-  [key: string]: (ResponseObject | ReferenceObject);
+export interface IResponsesObject {
+  default?: (IResponseObject | IReferenceObject);
+  [key: string]: (IResponseObject | IReferenceObject);
 }
 
-export interface ResponseObject {
+export interface IResponseObject {
   description: string;
-  schema?: SchemaObject | ReferenceObject;
+  schema?: ISchemaObject | IReferenceObject;
   headers?: {
-    [key: string]: {
-      description?: string;
-      type: string;
-      format?: string;
-      items?: ItemsObject;
-      collectionFormat?: string;
-      default?: any;
-      maximum?: number;
-      exclusiveMaximum?: boolean;
-      minimum?: number;
-      exclusiveMinimum?: boolean;
-      maxLength?: number;
-      minLength?: number;
-      pattern?: string;
-      maxItems?: number;
-      minItems?: number;
-      uniqueItems?: boolean;
-      enum?: any[];
-      multipleOf?: number;
-    };
+    [key: string]: IHeaderObject;
   };
   examples?: {[key: string]: any};
 }
 
-export interface SecuritySchemeObject {
+export interface ISecuritySchemeObject {
   type: string;
   description?: string;
   name: string;
@@ -133,58 +88,11 @@ export interface SecuritySchemeObject {
   scopes?: {[key: string]: string};
 }
 
-export interface SecurityRequirementObject {
+export interface ISecurityRequirementObject {
   [key: string]: string[];
 }
 
-export interface SchemaObject {
-  discriminator?: string;
-  readOnly?: boolean;
-  xml?: XmlObject;
-  externalDocs?: ExternalDocumentationObject;
-  example?: any;
-  collectionFormat?: string;
-  default?: any;
-  maximum?: number;
-  exclusiveMaximum?: boolean;
-  minimum?: number;
-  exclusiveMinimum?: boolean;
-  maxLength?: number;
-  minLength?: number;
-  pattern?: string;
-  maxItems?: number;
-  minItems?: number;
-  uniqueItems?: boolean;
-  enum?: any[];
-  multipleOf?: number;
-}
-
-export interface ItemsObject {
-  type: string;
-  format?: string;
-  items: ItemsObject;
-  collectionFormat?: string;
-  default?: any;
-  maximum?: number;
-  exclusiveMaximum?: boolean;
-  minimum?: number;
-  exclusiveMinimum?: boolean;
-  maxLength?: number;
-  minLength?: number;
-  pattern?: string;
-  maxItems?: number;
-  minItems?: number;
-  uniqueItems?: boolean;
-  enum?: any[];
-  multipleOf?: number;
-}
-
-export interface ExternalDocumentationObject {
-  description?: string;
-  url: string;
-}
-
-export interface XmlObject {
+export interface IXmlObject {
   name?: string;
   namespace?: string;
   prefix?: string;
@@ -192,8 +100,65 @@ export interface XmlObject {
   wrapped?: boolean;
 }
 
-export interface TagObject {
+export interface IExternalDocumentationObject {
+  description?: string;
+  url: string;
+}
+
+export interface ITagObject {
   name: string;
   description?: string;
-  externalDocs?: ExternalDocumentationObject;
+  externalDocs?: IExternalDocumentationObject;
+}
+
+export interface IParameterObject extends IJsonSchema {
+  name: string;
+  in: string;
+  schema?: ISchemaObject | IReferenceObject;
+  allowEmptyValue?: boolean;
+  items?: IItemsObject;
+  collectionFormat?: string;
+}
+
+export interface ISchemaObject extends IJsonSchema {
+  discriminator?: string;
+  readOnly?: boolean;
+  xml?: IXmlObject;
+  externalDocs?: IExternalDocumentationObject;
+  example?: any;
+  collectionFormat?: string;
+}
+
+export interface IHeaderObject extends IJsonSchema {
+  items: IItemsObject;
+  collectionFormat?: string;
+}
+
+export interface IItemsObject extends IJsonSchema {
+  items: IItemsObject;
+  collectionFormat?: string;
+}
+
+export interface IJsonSchema {
+  $ref?: string;
+  format?: string;
+  title?: string;
+  description?: string;
+  default?: any;
+  multipleOf?: number;
+  maximum?: number;
+  exclusiveMaximum?: boolean;
+  minimum?: number;
+  exclusiveMinimum?: boolean;
+  maxLength?: number;
+  minLength?: number;
+  pattern?: string;
+  maxItems?: number;
+  minItems?: number;
+  uniqueItems?: boolean;
+  maxProperties?: number;
+  minProperties?: number;
+  required?: boolean;
+  enum?: any[];
+  type?: string;
 }
