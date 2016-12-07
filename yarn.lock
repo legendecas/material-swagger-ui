@@ -510,15 +510,7 @@ aws4@^1.2.1:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.5.0.tgz#0a29ffb79c31c9e712eeb087e8e7a64b4a56d755"
 
-babel-polyfill@^6.9.1:
-  version "6.16.0"
-  resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.16.0.tgz#2d45021df87e26a374b6d4d1a9c65964d17f2422"
-  dependencies:
-    babel-runtime "^6.9.1"
-    core-js "^2.4.0"
-    regenerator-runtime "^0.9.5"
-
-babel-runtime@^6.18.0, babel-runtime@^6.9.1:
+babel-runtime@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.18.0.tgz#0f4177ffd98492ef13b9f823e9994a02584c9078"
   dependencies:
@@ -637,12 +629,6 @@ boom@2.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
-
-bootstrap-material-design@FezVrasta/bootstrap-material-design#v4.0.2:
-  version "4.0.2"
-  resolved "https://codeload.github.com/FezVrasta/bootstrap-material-design/tar.gz/ec3a7ffc23d1f18ac822442fe06d3688d29cbbea"
-  dependencies:
-    babel-polyfill "^6.9.1"
 
 bootstrap@4.0.0-alpha.5:
   version "4.0.0-alpha.5"

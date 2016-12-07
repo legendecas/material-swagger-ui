@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
-@import "~bootstrap-material-design/dist/bootstrap-material-design.min.css";
+@import "~bootstrap/scss/bootstrap-flex.scss";
+@import "material-theme";
 
 * {
   margin: 0;
@@ -26,4 +26,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   background: #FAFAFA;
+}
+
+button:focus {
+  outline: 0;
 }

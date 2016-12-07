@@ -9,7 +9,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 $app-primary: md-palette($md-indigo);
-$app-accent:  md-palette($md-pink, A200, A100, A400);
+$app-accent:  md-palette($md-teal);
 
 // The warn palette is optional (defaults to red).
 $app-warn:    md-palette($md-red);

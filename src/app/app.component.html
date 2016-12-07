@@ -1,8 +1,7 @@
 <md-toolbar [color]="'primary'" class="app-toolbar">
-  <button (click)="sidenav.toggle()"
-          type="button" class="btn menu-btn">
-    <i *ngIf="!sidenav.opened" class="material-icons">menu</i>
-    <i *ngIf="sidenav.opened" class="material-icons">chevron_left</i>
+  <button (click)="sidenav.toggle()" md-icon-button>
+    <md-icon *ngIf="!sidenav.opened">menu</md-icon>
+    <md-icon *ngIf="sidenav.opened">chevron_left</md-icon>
   </button>
 
   <h4>{{title}}</h4>
