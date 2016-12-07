@@ -8,16 +8,16 @@ $toolbar-height: 4rem;
   top: 0;
   height: $toolbar-height;
 
-  .menu-btn {
-    color: white !important;
-  }
-
-  span.fill-space {
+  .fill-space {
     flex: 1 1 auto;
   }
 
-  h6.info {
+  .info {
     margin-right: 0.5rem;
+  }
+
+  .toolbar-header {
+    margin-bottom: 0;
   }
 }
 

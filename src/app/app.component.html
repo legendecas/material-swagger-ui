@@ -1,13 +1,13 @@
-<md-toolbar [color]="'primary'" class="app-toolbar">
+<md-toolbar color="primary" class="app-toolbar">
   <button (click)="sidenav.toggle()" md-icon-button>
     <md-icon *ngIf="!sidenav.opened">menu</md-icon>
     <md-icon *ngIf="sidenav.opened">chevron_left</md-icon>
   </button>
 
-  <h4>{{title}}</h4>
-  <span class="fill-space hidden-sm-down"></span>
-  <h6 *ngIf="host" class="info hidden-sm-down">Host: {{host}}</h6>
-  <h6 *ngIf="basePath" class="info hidden-sm-down">BasePath: {{basePath}}</h6>
+  <h4 class="toolbar-header">{{title}}</h4>
+  <span class="fill-space hidden-sm-down toolbar-header"></span>
+  <h6 *ngIf="host" class="info hidden-sm-down toolbar-header">Host: {{host}}</h6>
+  <h6 *ngIf="basePath" class="info hidden-sm-down toolbar-header">BasePath: {{basePath}}</h6>
 </md-toolbar>
 
 <md-sidenav-layout>
