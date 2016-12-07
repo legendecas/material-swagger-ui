@@ -35,8 +35,12 @@
             <tr *ngFor="let parameter of parameters">
               <th>{{parameter.name}}</th>
               <th>{{parameter.description}}</th>
-              <th>{{parameter.type}}</th>
-              <th>{{parameter.schema | prettyJson}}</th>
+              <th>{{parameter.in}}</th>
+              <th>
+                <pre class="pre-code">
+                  <code>{{parameter | parameterSchemaFormatter | async | prettyJson}}</code>
+                </pre>
+              </th>
             </tr>
           </tbody>
         </table>
@@ -55,7 +59,9 @@
           </div>
           <p>{{res.response.description}}</p>
           <div *ngIf="res.response.schema">
-            <pre><code>{{res.response.schema | prettyJson}}</code></pre>
+            <pre class="pre-code">
+              <code>{{res.response.schema | schemaFormatter | async | prettyJson}}</code>
+            </pre>
           </div>
         </li>
       </ul>

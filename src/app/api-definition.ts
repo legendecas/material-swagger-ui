@@ -127,6 +127,12 @@ export interface ISchemaObject extends IJsonSchema {
   externalDocs?: IExternalDocumentationObject;
   example?: any;
   collectionFormat?: string;
+  items?: ISchemaObject;
+  allOf?: ISchemaObject;
+  properties?: {
+    [key: string]: ISchemaObject;
+  };
+  additionalProperties?: ISchemaObject;
 }
 
 export interface IHeaderObject extends IJsonSchema {
@@ -134,6 +140,10 @@ export interface IHeaderObject extends IJsonSchema {
   collectionFormat?: string;
 }
 
+/**
+ * A limited subset of JSON-Schema's items object. It is used by parameter definitions that are not
+ * located in "body".
+ */
 export interface IItemsObject extends IJsonSchema {
   items: IItemsObject;
   collectionFormat?: string;

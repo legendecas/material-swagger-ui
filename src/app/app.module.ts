@@ -12,6 +12,9 @@ import { PrettyJsonPipe } from './pretty-json.pipe';
 import { InfoCardComponent } from './info-card/info-card.component';
 import { MarkedPipe } from './marked.pipe';
 import { DrawerComponent } from './drawer/drawer.component';
+import { ParameterSchemaFormatterPipe } from './parameter-schema-formatter.pipe';
+import { SchemaFormatterPipe } from './schema-formatter.pipe';
+import { SchemaFormatterService } from './schema-formatter.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,8 @@ import { DrawerComponent } from './drawer/drawer.component';
     InfoCardComponent,
     MarkedPipe,
     DrawerComponent,
+    ParameterSchemaFormatterPipe,
+    SchemaFormatterPipe,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +37,7 @@ import { DrawerComponent } from './drawer/drawer.component';
   providers: [
     ApiDefinitionService,
     SchemaValidationService,
+    SchemaFormatterService,
   ],
   bootstrap: [AppComponent]
 })

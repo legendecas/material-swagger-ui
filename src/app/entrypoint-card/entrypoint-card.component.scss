@@ -61,3 +61,10 @@ $deprecated-color: grey;
     list-style-type: none;
   }
 }
+
+pre {
+  white-space: pre-line;
+  code {
+    white-space: pre-wrap;
+  }
+}
