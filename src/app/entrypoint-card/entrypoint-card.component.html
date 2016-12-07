@@ -10,15 +10,19 @@
        [innerHTML]="entrypoint.description | marked"
        class="markdown-body text-muted"></p>
 
-    <div class="row flex-items-xs-left">
-      <p class="col-xs-12 col-md-10">security: {{entrypoint.security | json}}</p>
+    <div class="row flex-items-xs-left entrypoint-action">
+      <div class="col-xs-12 col-md-10">
+        <span *ngFor="let scope of securities" class="tag tag-default">
+          {{scope}}
+        </span>
+      </div>
       <button md-button color="accent" class="col-xs-2" (click)="toggleDetails()">
         DETAILS
       </button>
     </div>
   </div>
 
-  <div entrypoint-details class="container" *ngIf="showDetails">
+  <div entrypoint-details #details class="container collapse">
     <p class="h6">Request</p>
     <div *ngIf="parameters.length > 0">
       <div class="table-responsive">

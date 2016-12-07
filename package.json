@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^2.1.0",
     "@angular/router": "^3.1.0",
     "@types/hammerjs": "^2.0.33",
+    "@types/jquery": "^2.0.34",
     "@types/lodash": "^4.14.40",
     "@types/marked": "^0.0.28",
     "bootstrap": "4.0.0-alpha.5",

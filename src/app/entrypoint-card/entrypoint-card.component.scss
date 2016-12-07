@@ -46,6 +46,9 @@ $deprecated-color: grey;
 }
 
 [entrypoint-summary] {
+  .entrypoint-action {
+    align-items: center;
+  }
 }
 
 [entrypoint-details] {

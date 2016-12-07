@@ -81,6 +81,10 @@
   version "2.5.38"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.38.tgz#a4379124c4921d4e21de54ec74669c9e9b356717"
 
+"@types/jquery@^2.0.34":
+  version "2.0.34"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-2.0.34.tgz#27615b369f30e572336126514e74672dda6e3d04"
+
 "@types/lodash@^4.14.40":
   version "4.14.40"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.40.tgz#e67478f69bb1ad93a0e7ab6f3f276816d27088de"

@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Entrypoint } from '../entrypoint';
 import { IParameterObject, IResponseObject } from '../api-definition';
 import { ApiDefinitionService } from '../api-definition.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-entrypoint-card',
@@ -16,7 +17,7 @@ export class EntrypointCardComponent implements OnInit {
   responses: {name: string, response: IResponseObject}[] = [];
   errors: any[] = [];
 
-  showDetails = false;
+  @ViewChild('details') detailsView: ElementRef;
 
   constructor(private apiDefinition: ApiDefinitionService) {
   }
@@ -36,7 +37,15 @@ export class EntrypointCardComponent implements OnInit {
   }
 
   toggleDetails() {
-    this.showDetails = !this.showDetails;
+    ($(this.detailsView.nativeElement) as any).collapse('toggle');
+  }
+
+  get securities() {
+    if (this.entrypoint.security) {
+      return _.flatMap(this.entrypoint.security, sec => _.values(sec));
+    } else {
+      return [];
+    }
   }
 
 }
