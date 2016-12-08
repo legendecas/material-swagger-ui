@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiDefinitionService } from '../api-definition.service';
 
 @Component({
   selector: 'app-drawer',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DrawerComponent implements OnInit {
 
-  constructor() { }
+  tags: string[]= [];
+
+  constructor(private apiDefinition: ApiDefinitionService) { }
 
   ngOnInit() {
+    this.apiDefinition.resolveTags().toArray().subscribe(
+      tags => this.tags = tags.map(tag => tag.name),
+      error => console.error(error),
+    );
   }
 
 }

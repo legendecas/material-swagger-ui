@@ -1,5 +1,10 @@
-<div class="drawer container">
-  <p>
-    drawer works!
-  </p>
+<div id="drawer" class="drawer container">
+  <ul class="nav nav-pills nav-stacked">
+    <li class="nav-item">
+      <a class="nav-link" href="#description">API Description</a>
+    </li>
+    <li *ngFor="let tag of tags" class="nav-item">
+      <a class="nav-link" href="#{{tag}}">{{tag}}</a>
+    </li>
+  </ul>
 </div>

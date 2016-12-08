@@ -1,5 +1,5 @@
 <div *ngFor="let tag of tags" class="container">
-  <h4>{{tag.name}}</h4>
+  <h4 id="{{tag.name}}">{{tag.name}}</h4>
   <span *ngIf="tag.description" class="text-muted">{{tag.description}}</span>
   <ul class="entrypoint-list">
     <li *ngFor="let entrypoint of entrypointsOfTag(tag.name)" class="entrypoint-list-item">

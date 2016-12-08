@@ -1,6 +1,21 @@
 .drawer {
   top: 4rem;
   position: absolute;
+  width: 100%;
   height: calc(100vh - 4rem);
   overflow-y: auto;
+}
+
+.nav {
+  margin-top: 2rem;
+}
+
+.nav-link {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  border-radius: 0;
+
+  height: 3rem;
+  display: flex;
+  align-items: center;
 }
