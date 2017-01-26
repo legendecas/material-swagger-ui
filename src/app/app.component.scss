@@ -24,7 +24,9 @@ $toolbar-height: 4rem;
 .app-content-root {
   margin-top: $toolbar-height;
   height: calc(100vh - #{$toolbar-height});
+  overflow-x: hidden;
   overflow-y: auto;
+  background-color: #EEEEEE;
 }
 
 .app-content {

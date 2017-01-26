@@ -1,5 +1,5 @@
-<md-card>
-  <div entrypoint-method [ngClass]="entrypoint.method">
+<div entrypoint class="bg-break-container">
+  <div entrypoint-method [ngClass]="entrypoint.method" class="bg-break-container">
     <span class="method">{{entrypoint.method.toUpperCase()}}</span>
     <span class="path">{{entrypoint.path}}</span>
   </div>
@@ -22,53 +22,43 @@
     </div>
   </div>
 
-  <div entrypoint-details #details class="container collapse">
-    <p class="h6">Request</p>
-    <div *ngIf="parameters.length > 0">
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Parameter</th>
-              <th>Description</th>
-              <th>Type</th>
-              <th>Data Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let parameter of parameters">
-              <th>{{parameter.name}}</th>
-              <th>{{parameter.description}}</th>
-              <th>{{parameter.in}}</th>
-              <th>
+  <div entrypoint-details #details class="collapse bg-break-container">
+    <div class="container">
+      <p class="h6">Request</p>
+      <div *ngIf="parameters.length > 0">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Data Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let parameter of parameters">
+                <th>{{parameter.name}}</th>
+                <th>{{parameter.description}}</th>
+                <th>{{parameter.in}}</th>
+                <th>
                 <pre class="pre-code">
                   <code>{{parameter | parameterSchemaFormatter | async | prettyJson}}</code>
                 </pre>
-              </th>
-            </tr>
-          </tbody>
-        </table>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <ul>
+          <li *ngFor="let res of responses">
+            <app-response-view [name]="name + '-' + res.name" [res]="res"></app-response-view>
+          </li>
+        </ul>
       </div>
     </div>
-
-    <div class="separator"></div>
-
-    <div>
-      <ul>
-        <li *ngFor="let res of responses">
-          <div>
-            <span *ngIf="res.name != 'default'" class="h6">Response </span>
-            <span [class.text-warning]="res.name >= 400"
-                  [class.text-success]="res.name < 300">{{res.name}}</span>
-          </div>
-          <p>{{res.response.description}}</p>
-          <div *ngIf="res.response.schema">
-            <pre class="pre-code">
-              <code>{{res.response.schema | schemaFormatter | async | prettyJson}}</code>
-            </pre>
-          </div>
-        </li>
-      </ul>
-    </div>
   </div>
-</md-card>
+</div>

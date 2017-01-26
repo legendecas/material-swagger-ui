@@ -48,4 +48,7 @@ export class EntrypointCardComponent implements OnInit {
     }
   }
 
+  get name() {
+    return _.kebabCase(this.entrypoint.method + '-' + this.entrypoint.path);
+  }
 }

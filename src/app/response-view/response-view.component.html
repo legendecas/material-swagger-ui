@@ -1,0 +1,39 @@
+<div>
+  <span *ngIf="res.name != 'default'" class="h6">Response </span>
+  <span [class.text-warning]="res.name >= 400"
+        [class.text-success]="res.name < 300">{{res.name}}</span>
+</div>
+<p>{{res.response.description}}</p>
+<div *ngIf="res.response.schema">
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a data-toggle="tab" [attr.href]="'#' + name + '-schema'"
+         class="nav-link active" role="tab">Schema</a>
+    </li>
+    <li class="nav-item">
+      <a data-toggle="tab" [attr.href]="'#' + name + '-json-schema'"
+         class="nav-link" role="tab">Json Schema</a>
+    </li>
+    <li *ngIf="res.response.schema.example" class="nav-item">
+      <a data-toggle="tab" [attr.href]="'#' + name + '-example'"
+         class="nav-link" role="tab">Example</a>
+    </li>
+  </ul>
+  <div class="container tab-content">
+    <div [attr.id]="name + '-schema'" class="tab-pane fade in active" role="tabpanel">
+      <pre class="pre-code">
+        <code>Schema</code>
+      </pre>
+    </div>
+    <div [attr.id]="name + '-json-schema'" class="tab-pane fade" role="tabpanel">
+      <pre class="pre-code">
+        <code>{{res.response.schema | schemaFormatter | async | prettyJson}}</code>
+      </pre>
+    </div>
+    <div [attr.id]="name + '-example'" class="tab-pane fade" role="tabpanel">
+      <pre class="pre-code">
+        <code>{{res.response.schema.example | prettyJson}}</code>
+      </pre>
+    </div>
+  </div>
+</div>

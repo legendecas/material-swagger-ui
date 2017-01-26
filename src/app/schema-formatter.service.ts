@@ -18,7 +18,7 @@ export class SchemaFormatterService {
       switch (schema.type) {
         case 'object':
           return Observable.create(observable => {
-            const keys = Object.keys(schema.properties);
+            const keys = Object.keys(schema.properties || {});
             keys.forEach(key => {
               observable.next(this.resolveRef(schema.properties[key])
                 .map(property => ({ [key]: property })));

@@ -15,6 +15,7 @@ import { DrawerComponent } from './drawer/drawer.component';
 import { ParameterSchemaFormatterPipe } from './parameter-schema-formatter.pipe';
 import { SchemaFormatterPipe } from './schema-formatter.pipe';
 import { SchemaFormatterService } from './schema-formatter.service';
+import { ResponseViewComponent } from './response-view/response-view.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SchemaFormatterService } from './schema-formatter.service';
     DrawerComponent,
     ParameterSchemaFormatterPipe,
     SchemaFormatterPipe,
+    ResponseViewComponent,
   ],
   imports: [
     BrowserModule,

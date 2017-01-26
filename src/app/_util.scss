@@ -1,0 +1,9 @@
+
+$margin-size: 10rem;
+
+.bg-break-container {
+  margin-left: -$margin-size;
+  margin-right: -$margin-size;
+  padding-left: $margin-size;
+  padding-right: $margin-size;
+}

@@ -2,7 +2,8 @@
   <h4 id="{{tag.name}}">{{tag.name}}</h4>
   <span *ngIf="tag.description" class="text-muted">{{tag.description}}</span>
   <ul class="entrypoint-list">
-    <li *ngFor="let entrypoint of entrypointsOfTag(tag.name)" class="entrypoint-list-item">
+    <li *ngFor="let entrypoint of entrypointsOfTag(tag.name)"
+        class="entrypoint-list-item bg-break-container">
       <app-entrypoint-card [entrypoint]="entrypoint"></app-entrypoint-card>
     </li>
   </ul>

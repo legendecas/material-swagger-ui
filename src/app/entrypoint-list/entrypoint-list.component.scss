@@ -1,7 +1,13 @@
+@import "../util";
+
 .entrypoint-list {
   list-style: none;
 }
 
-.entrypoint-list-item {
-  margin-top: 18px;
+.entrypoint-list-item:first-child {
+  margin-top: 1rem;
+}
+
+.entrypoint-list-item:last-child {
+  border-bottom: 1px solid hsla(0, 0%, 63%, .2);
 }
