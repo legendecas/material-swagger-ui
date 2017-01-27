@@ -1,4 +1,3 @@
-import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +9,7 @@ import { AppComponent } from './app.component';
 import { RequestPanelComponent } from './request-panel/request-panel.component';
 import { ResponsePanelComponent } from './response-panel/response-panel.component';
 import { EntrypointsPanelComponent } from './entrypoints-panel/entrypoints-panel.component';
+import { AppBarComponent } from './app-bar/app-bar.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +17,7 @@ import { EntrypointsPanelComponent } from './entrypoints-panel/entrypoints-panel
     RequestPanelComponent,
     ResponsePanelComponent,
     EntrypointsPanelComponent,
+    AppBarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,63 @@
 <div class="panel">
-  <p>
-    request-panel works!
-  </p>
+  <div class="header container">
+    <p>
+      request-panel works!
+    </p>
+  </div>
+  <div class="content container">
+    <md-tab-group>
+      <md-tab label="Headers">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Header Name</th>
+              <th>Header Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Authorization</th>
+              <td>string</td>
+            </tr>
+            <tr>
+              <th>Content-Type</th>
+              <td>string</td>
+            </tr>
+            <tr>
+              <th>Foobar</th>
+              <td>string</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-tab>
+      <md-tab label="URL Params">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>URL Parameter</th>
+              <th>Value Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Authorization</th>
+              <td>string</td>
+            </tr>
+            <tr>
+              <th>Content-Type</th>
+              <td>string</td>
+            </tr>
+            <tr>
+              <th>Foobar</th>
+              <td>string</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-tab>
+      <md-tab label="Body">
+        <h1>Some body tab content</h1>
+        <p>...</p>
+      </md-tab>
+    </md-tab-group>
+  </div>
 </div>

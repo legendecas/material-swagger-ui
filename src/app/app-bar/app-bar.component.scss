@@ -1,0 +1,6 @@
+@import "../variables";
+
+.app-bar {
+  height: $app-bar-height;
+  border-bottom: 1px solid $panel-separator-color;
+}

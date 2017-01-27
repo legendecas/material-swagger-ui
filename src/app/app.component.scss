@@ -1,10 +1,11 @@
+@import "./variables";
+
 .app-container {
   overflow: hidden;
-  height: 100%;
-  width: 100%;
+  height: calc(100vh - #{$app-bar-height});
+  width: 100vw;
 }
 
-$panel-separator-color: #40413E;
 .app-panel:nth-last-of-type(2) {
   border-left: 1px solid $panel-separator-color;
   border-right: 1px solid $panel-separator-color;

@@ -1,5 +1,41 @@
 <div class="panel">
-  <p>
-    response-panel works!
-  </p>
+  <div class="header container flex-container" fxLayout="row" fxLayoutAlign="start center">
+    <nav class="nav nav-pills flex-container" fxLayout="row">
+      <a class="flex-sm-fill text-sm-center nav-link active" href="#">Active</a>
+      <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
+      <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
+    </nav>
+  </div>
+  <div class="content container">
+    <md-tab-group>
+      <md-tab label="Headers">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Header Name</th>
+              <th>Header Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Authorization</th>
+              <td>string</td>
+            </tr>
+            <tr>
+              <th>Content-Type</th>
+              <td>string</td>
+            </tr>
+            <tr>
+              <th>Foobar</th>
+              <td>string</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-tab>
+      <md-tab label="Body">
+        <h1>Some body tab content</h1>
+        <p>...</p>
+      </md-tab>
+    </md-tab-group>
+  </div>
 </div>

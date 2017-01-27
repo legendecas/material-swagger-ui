@@ -1,6 +1,18 @@
+@import "../variables";
+
 .panel {
   height: 100%;
   width: 100%;
-  background-color: #2E2F2B;
-  color: #CACACA;
+  background-color: $primary-background-color;
+  color: $primary-font-color;
+}
+
+.header {
+  height: $header-height;
+  border-bottom: 1px solid $panel-separator-color;
+}
+
+.content {
+  height: calc(100% - #{$header-height});
+  overflow-y: auto;
 }
