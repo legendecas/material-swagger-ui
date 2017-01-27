@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { EntrypointsPanelComponent } from './entrypoints-panel.component';
+import { AppBoardComponent } from './app-board.component';
 
-describe('EntrypointsPanelComponent', () => {
-  let component: EntrypointsPanelComponent;
-  let fixture: ComponentFixture<EntrypointsPanelComponent>;
+describe('AppBoardComponent', () => {
+  let component: AppBoardComponent;
+  let fixture: ComponentFixture<AppBoardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EntrypointsPanelComponent ]
+      declarations: [ AppBoardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EntrypointsPanelComponent);
+    fixture = TestBed.createComponent(AppBoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

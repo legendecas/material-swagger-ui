@@ -1,0 +1,11 @@
+@import "../variables";
+
+.board {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.panel:first-of-type {
+  border-right: 1px solid $panel-separator-color;
+}

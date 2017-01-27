@@ -1,15 +1,16 @@
 @import "../variables";
 
-.panel {
+.board {
   height: 100%;
   width: 100%;
-  background-color: $primary-background-color;
+  background-color: $secondary-background-color;
   color: $primary-font-color;
 }
 
 .header {
-  height: $header-height;
   border-bottom: 1px solid $panel-separator-color;
+  background-color: $third-background-color;
+  height: $header-height;
 }
 
 .content {

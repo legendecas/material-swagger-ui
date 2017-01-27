@@ -1,0 +1,35 @@
+@import "../variables";
+
+.board {
+  height: 100%;
+  width: 100%;
+  background-color: $primary-background-color;
+  color: $primary-font-color;
+}
+
+.header {
+  height: $header-height;
+  border-bottom: 1px solid $panel-separator-color;
+}
+
+.info-table {
+  margin: 0;
+  font-size: 0.75rem;
+  color: $primary-font-color;
+
+  th {
+    color: $secondary-font-color;
+    font-weight: normal;
+    padding: 0;
+  }
+
+  td {
+    text-align: right;
+    padding: 0;
+  }
+}
+
+.content {
+  height: calc(100% - #{$header-height});
+  overflow-y: auto;
+}

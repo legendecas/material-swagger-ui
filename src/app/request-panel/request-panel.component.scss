@@ -1,6 +1,6 @@
 @import "../variables";
 
-.panel {
+.board {
   height: 100%;
   width: 100%;
   background-color: $secondary-background-color;
@@ -11,6 +11,12 @@
   border-bottom: 1px solid $panel-separator-color;
   background-color: $third-background-color;
   height: $header-height;
+}
+
+.header > .entrypoint-address-container {
+  width: 100%;
+  height: 2rem;
+  padding: 0 1rem;
 }
 
 .content {

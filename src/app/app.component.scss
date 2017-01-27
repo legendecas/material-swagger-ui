@@ -6,7 +6,6 @@
   width: 100vw;
 }
 
-.app-panel:nth-last-of-type(2) {
-  border-left: 1px solid $panel-separator-color;
+.app-board:first-of-type {
   border-right: 1px solid $panel-separator-color;
 }
