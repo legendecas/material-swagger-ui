@@ -1,26 +1,26 @@
 <div class="board">
-    <div class="header container flex-container" fxLayout="column" fxLayoutAlign="center center">
-      <table class="info-table table">
-        <tbody>
-          <tr>
-            <th>Base Path</th>
-            <td>/v1</td>
-          </tr>
-          <tr>
-            <th>Doc Version</th>
-            <td>1.0.0</td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="header container flex-container" fxLayout="column" fxLayoutAlign="center center">
+    <table class="info-table table">
+      <tbody>
+        <tr>
+          <th>Base Path</th>
+          <td>/v1</td>
+        </tr>
+        <tr>
+          <th>Doc Version</th>
+          <td>1.0.0</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div class="content container">
     <md-nav-list dense>
-      <md-list-item> Api Descriptions</md-list-item>
+      <md-list-item routerLink="/app"> Api Descriptions </md-list-item>
       <md-divider></md-divider>
       <h3 md-subheader>Entrypoints</h3>
-      <md-list-item> Pepper </md-list-item>
-      <md-list-item> Salt </md-list-item>
-      <md-list-item> Paprika </md-list-item>
+      <md-list-item routerLink="/entrypoint/pepper"> Pepper</md-list-item>
+      <md-list-item routerLink="/entrypoint/salt"> Salt</md-list-item>
+      <md-list-item routerLink="/entrypoint/paprika"> Paprika</md-list-item>
     </md-nav-list>
   </div>
 </div>
