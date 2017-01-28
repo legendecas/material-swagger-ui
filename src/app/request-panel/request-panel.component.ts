@@ -16,6 +16,8 @@ export class RequestPanelComponent implements OnInit, OnChanges {
   entrypoint: Entrypoint;
   parameters: IParameterObject[] = [];
 
+  showDescription: boolean = true;
+
   constructor(private apiDefinition: ApiDefinitionService) { }
 
   ngOnInit() {}
@@ -25,6 +27,10 @@ export class RequestPanelComponent implements OnInit, OnChanges {
       .do(it => this.entrypoint = it)
       .concatMap(it => it.resolveParameters(this.apiDefinition))
       .subscribe(it => this.parameters = it);
+  }
+
+  toggleDescription() {
+    this.showDescription = !this.showDescription;
   }
 
   get headers(): IParameterObject[] {

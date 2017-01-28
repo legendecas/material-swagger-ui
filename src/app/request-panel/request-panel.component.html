@@ -7,8 +7,9 @@
       </div>
     </div>
   </div>
-  <div class="content container">
-    <md-tab-group>
+  <div class="content container flex-container" fxLayout="column"
+       fxLayoutAlign="space-between stretch">
+    <md-tab-group class="flex-item">
       <md-tab label="Headers" *ngIf="headers.length > 0">
         <table class="table">
           <thead>
@@ -50,5 +51,18 @@
         <p>...</p>
       </md-tab>
     </md-tab-group>
+    <div class="bottom-tab flex-item" [class.bottom-tab-full]="showDescription">
+      <div class="control-bar">
+        <div class="container flex-container h-100" fxLayout="row" fxLayoutAlign="start center">
+          <button md-icon-button class="flex-item" (click)="toggleDescription()">
+            <md-icon [hidden]="!showDescription">visibility</md-icon>
+            <md-icon [hidden]="showDescription">visibility_off</md-icon>
+          </button>
+        </div>
+      </div>
+      <div [hidden]="!showDescription" class="entrypoint-description">
+        <article [innerHTML]="entrypoint?.description | marked"></article>
+      </div>
+    </div>
   </div>
 </div>
