@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Entrypoint } from '../entrypoint';
 import { ApiDefinitionService } from '../api-definition.service';
 import { IResponseObject } from '../api-definition';
@@ -8,7 +8,7 @@ import { IResponseObject } from '../api-definition';
   templateUrl: './response-panel.component.html',
   styleUrls: ['./response-panel.component.scss']
 })
-export class ResponsePanelComponent implements OnInit {
+export class ResponsePanelComponent implements OnInit, OnChanges {
 
   @Input() method: string;
   @Input() path: string;
@@ -22,7 +22,9 @@ export class ResponsePanelComponent implements OnInit {
   constructor(private apiDefinition: ApiDefinitionService) {
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngOnChanges() {
     this.apiDefinition.entrypointOf(it => it.method === this.method && it.path === this.path)
       .do(it => this.entrypoint = it)
       .concatMap(it => it.resolveResponses(this.apiDefinition))
@@ -31,6 +33,7 @@ export class ResponsePanelComponent implements OnInit {
         this.selectedResponseName = it[0][0];
         this.selectedResponse = it[0][1];
       })
+      .take(1)
       .subscribe(it => this.responses = it);
   }
 

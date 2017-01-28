@@ -47,8 +47,7 @@ export class ApiDefinitionService {
 
   entrypointOf(filter: (it: Entrypoint) => boolean): Observable<Entrypoint> {
     return this.resolveEntrypoints()
-      .map(entrypoints => entrypoints
-        .filter(filter))
+      .map(entrypoints => entrypoints.filter(filter))
       .filter(it => it.length > 0)
       .map(it => it[0]);
   }
