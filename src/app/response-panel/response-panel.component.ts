@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Entrypoint } from '../entrypoint';
 import { ApiDefinitionService } from '../api-definition.service';
-import { IResponseObject } from '../api-definition';
+import { IResponseObject, IHeaderObject } from '../api-definition';
 
 @Component({
   selector: 'app-response-panel',
@@ -42,6 +42,15 @@ export class ResponsePanelComponent implements OnInit, OnChanges {
     if (filtered.length > 0) {
       this.selectedResponseName = filtered[0][0];
       this.selectedResponse = filtered[0][1]
+    }
+  }
+
+  get headers(): [string, IHeaderObject][] {
+    if (this.selectedResponse) {
+      const keys = Object.keys(this.selectedResponse.headers || {});
+      return keys.map(key => [key, this.selectedResponse.headers[key]] as [string, IHeaderObject])
+    } else {
+      return [];
     }
   }
 

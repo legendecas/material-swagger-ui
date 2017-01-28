@@ -113,7 +113,7 @@ export interface ITagObject {
 
 export interface IParameterObject extends IJsonSchema {
   name: string;
-  in: string;
+  in: 'query' | 'header' | 'path' | 'formData' | 'body';
   schema?: ISchemaObject | IReferenceObject;
   allowEmptyValue?: boolean;
   items?: IItemsObject;

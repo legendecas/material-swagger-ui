@@ -10,26 +10,20 @@
   </div>
   <div class="content container">
     <md-tab-group>
-      <md-tab label="Headers">
+      <md-tab label="Headers" *ngIf="headers.length > 0">
         <table class="table">
           <thead>
             <tr>
-              <th>Header Name</th>
-              <th>Header Type</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>Authorization</th>
-              <td>string</td>
-            </tr>
-            <tr>
-              <th>Content-Type</th>
-              <td>string</td>
-            </tr>
-            <tr>
-              <th>Foobar</th>
-              <td>string</td>
+            <tr *ngFor="let header of headers">
+              <th>{{header[0]}}</th>
+              <td>{{header[1].description}}</td>
+              <td>{{header[1].type}}</td>
             </tr>
           </tbody>
         </table>
