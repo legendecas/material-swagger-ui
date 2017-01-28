@@ -14,6 +14,9 @@ import { AppBarComponent } from './app-bar/app-bar.component';
 import { AppBoardComponent } from './app-board/app-board.component';
 import { EntrypointBoardComponent } from './entrypoint-board/entrypoint-board.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ApiDefinitionService } from './api-definition.service';
+import { SchemaValidationService } from './schema-validation.service';
+import { MarkedPipe } from './marked.pipe';
 
 const appRoutes: Routes = [
   { path: 'app', component: AppBoardComponent },
@@ -32,6 +35,7 @@ const appRoutes: Routes = [
     AppBoardComponent,
     EntrypointBoardComponent,
     PageNotFoundComponent,
+    MarkedPipe,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,10 @@ const appRoutes: Routes = [
     FlexLayoutModule.forRoot(),
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [
+    ApiDefinitionService,
+    SchemaValidationService,
+  ],
   bootstrap: [
     AppComponent,
   ],
