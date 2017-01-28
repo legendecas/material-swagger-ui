@@ -19,6 +19,8 @@ export class ResponsePanelComponent implements OnInit, OnChanges {
   selectedResponseName: string;
   selectedResponse: IResponseObject;
 
+  showDescription: boolean = true;
+
   constructor(private apiDefinition: ApiDefinitionService) {
   }
 
@@ -43,6 +45,10 @@ export class ResponsePanelComponent implements OnInit, OnChanges {
       this.selectedResponseName = filtered[0][0];
       this.selectedResponse = filtered[0][1]
     }
+  }
+
+  toggleDescription() {
+    this.showDescription = !this.showDescription;
   }
 
   get headers(): [string, IHeaderObject][] {

@@ -15,5 +15,20 @@
 
 .content {
   height: calc(100% - #{$header-height});
+}
+
+.bottom-tab-full {
+  height: 30%;
+}
+
+.control-bar {
+  height: 3rem;
+  margin: 0 -1rem;
+  padding: 0 1rem;
+  background-color: $primary-background-color;
+  border: 1px solid $panel-separator-color;
+}
+
+.response-description {
   overflow-y: auto;
 }
