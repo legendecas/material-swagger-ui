@@ -1,8 +1,8 @@
 <div class="flex-container board" fxLayout="row">
   <div class="flex-item panel" fxFlex="50%">
-    <app-request-panel></app-request-panel>
+    <app-request-panel [method]="method" [path]="path"></app-request-panel>
   </div>
   <div class="flex-item panel" fxFlex="50%">
-    <app-response-panel></app-response-panel>
+    <app-response-panel [method]="method" [path]="path"></app-response-panel>
   </div>
 </div>

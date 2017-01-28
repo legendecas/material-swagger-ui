@@ -1,9 +1,11 @@
 <div class="board">
   <div class="header container flex-container" fxLayout="row" fxLayoutAlign="start center">
     <nav class="nav nav-pills flex-container" fxLayout="row">
-      <a class="flex-sm-fill text-sm-center nav-link active" href="#">Active</a>
-      <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
-      <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
+      <a *ngFor="let response of responses"
+         class="flex-sm-fill text-sm-center nav-link"
+         [class.active]="selectedResponseName === response[0]"
+         (click)="switchResponse(response[0])"
+      >{{response[0]}}</a>
     </nav>
   </div>
   <div class="content container">

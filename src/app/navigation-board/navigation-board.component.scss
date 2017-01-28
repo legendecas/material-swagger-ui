@@ -33,3 +33,16 @@
   height: calc(100% - #{$header-height});
   overflow-y: auto;
 }
+
+.tag {
+  h3 {
+    margin-top: -0.5rem;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+  p {
+    font-size: 0.75rem;
+    margin-top: -0.5rem;
+    font-weight: normal;
+  }
+}

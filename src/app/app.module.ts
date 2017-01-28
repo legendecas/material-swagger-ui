@@ -20,7 +20,11 @@ import { MarkedPipe } from './marked.pipe';
 
 const appRoutes: Routes = [
   { path: 'app', component: AppBoardComponent },
-  { path: 'entrypoint/:id', component: EntrypointBoardComponent, },
+  { path: 'entrypoint', children: [
+    { path: '', children: [
+      { path: ':method', children: [
+        { path: '**', component: EntrypointBoardComponent}] }
+    ]}] },
   { path: '', redirectTo: '/app', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

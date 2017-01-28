@@ -52,7 +52,7 @@ export class Entrypoint {
     return this.operation.security;
   }
 
-  resolveParameters(apiDefinitionService: ApiDefinitionService): Observable<IParameterObject> {
+  resolveParameters(apiDefinitionService: ApiDefinitionService): Observable<IParameterObject[]> {
     return Observable.from(this.operation.parameters.map(parameter => {
       if ((parameter as IReferenceObject).$ref) {
         return apiDefinitionService.resolveReference((parameter as IReferenceObject).$ref);
@@ -71,10 +71,11 @@ export class Entrypoint {
         } else {
           return Observable.of(parameter);
         }
-      });
+      })
+      .toArray();
   }
 
-  resolveResponses(apiDefinitionService: ApiDefinitionService): Observable<[string, IResponseObject]> {
+  resolveResponses(apiDefinitionService: ApiDefinitionService): Observable<[string, IResponseObject][]> {
     return Observable.from(Object.keys(this.operation.responses)
       .map(responseName => {
         const responseObject = this.operation.responses[responseName];
@@ -95,6 +96,7 @@ export class Entrypoint {
             });
         }
         return Observable.of([name, obj]);
-      });
+      })
+      .toArray();
   }
 }

@@ -4,11 +4,11 @@
       <tbody>
         <tr>
           <th>Base Path</th>
-          <td>/v1</td>
+          <td>{{basePath}}</td>
         </tr>
         <tr>
           <th>Doc Version</th>
-          <td>1.0.0</td>
+          <td>{{docVersion}}</td>
         </tr>
       </tbody>
     </table>
@@ -17,10 +17,17 @@
     <md-nav-list dense>
       <md-list-item routerLink="/app"> Api Descriptions </md-list-item>
       <md-divider></md-divider>
-      <h3 md-subheader>Entrypoints</h3>
-      <md-list-item routerLink="/entrypoint/pepper"> Pepper</md-list-item>
-      <md-list-item routerLink="/entrypoint/salt"> Salt</md-list-item>
-      <md-list-item routerLink="/entrypoint/paprika"> Paprika</md-list-item>
+      <div *ngFor="let tag of tags">
+        <div md-subheader class="tag">
+          <h3>{{tag.name}}</h3>
+          <p>{{tag.description}}</p>
+        </div>
+        <md-list-item *ngFor="let entrypoint of entrypointsOfTag(tag.name)"
+                      routerLink="/entrypoint/{{entrypoint.method}}{{entrypoint.path}}">
+          <span class="badge badge-default">{{entrypoint.method}}</span>
+          <span>{{entrypoint.path}}</span>
+        </md-list-item>
+      </div>
     </md-nav-list>
   </div>
 </div>
