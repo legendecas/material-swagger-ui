@@ -17,6 +17,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ApiDefinitionService } from './api-definition.service';
 import { SchemaValidationService } from './schema-validation.service';
 import { MarkedPipe } from './marked.pipe';
+import { JsonTableComponent } from './json-table/json-table.component';
 
 const appRoutes: Routes = [
   { path: 'app', component: AppBoardComponent },
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
     EntrypointBoardComponent,
     PageNotFoundComponent,
     MarkedPipe,
+    JsonTableComponent,
   ],
   imports: [
     BrowserModule,

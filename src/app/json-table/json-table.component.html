@@ -1,0 +1,36 @@
+<div class="json-table flex-container" [class.json-table-root]="isRoot" fxLayout="row" fxLayoutAlign="start start">
+  <div class="flex-item" fxFlex="5%">
+    <md-icon [hidden]="!isArray && !isObject"
+             (click)="toggleContent()">
+      {{contentHidden ? 'keyboard_arrow_right' : 'keyboard_arrow_down'}}
+    </md-icon>
+  </div>
+  <div class="flex-item" fxFlex="95%">
+    <div class="flex-container" fxLayout="column" fxLayoutAlign="start stretch">
+      <div class="title line flex-item">
+        <div class="flex-container" fxLayout="row" fxLayoutAlign="space-between center">
+          <span class="flex-item">{{isRoot ? 'Root' : name}}</span>
+          <div class="flex-item">{{typeAlias}}</div>
+          <span class="flex-item">{{schema.type}}</span>
+        </div>
+      </div>
+      <div class="flex-item line" [hidden]="contentHidden">
+        <div *ngIf="isArray">
+          <app-json-table [isRoot]="false"
+                          [schema]="item"
+                          [name]="'item'"
+                          [typeAlias]="itemTypeAlias">
+          </app-json-table>
+        </div>
+        <div *ngIf="isObject">
+          <app-json-table *ngFor="let property of properties"
+                          [isRoot]="false"
+                          [name]="property[0]"
+                          [schema]="property[1]"
+                          [typeAlias]="property[2]">
+          </app-json-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

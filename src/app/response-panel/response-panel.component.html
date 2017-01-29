@@ -29,8 +29,10 @@
           </tbody>
         </table>
       </md-tab>
-      <md-tab label="Body" *ngIf="!!selectedResponse?.schema">
-        {{selectedResponse.schema | json}}
+      <md-tab label="Body" *ngIf="selectedResponse && !!selectedResponse.schema">
+        <div class="container">
+          <app-json-table [schema]="selectedResponse.schema"></app-json-table>
+        </div>
       </md-tab>
     </md-tab-group>
     <div *ngIf="!showContentTable" class="w-100 text-center">

@@ -65,7 +65,9 @@
         </table>
       </md-tab>
       <md-tab label="Body" *ngIf="body.length > 0">
-        {{body | json}}
+        <div class="container">
+          <app-json-table [schema]="body[0].schema"></app-json-table>
+        </div>
       </md-tab>
     </md-tab-group>
     <div *ngIf="parameters.length <= 0" class="w-100 text-center">
