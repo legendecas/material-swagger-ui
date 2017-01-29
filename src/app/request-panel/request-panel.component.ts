@@ -37,8 +37,8 @@ export class RequestPanelComponent implements OnInit, OnChanges {
     return this.parameters.filter(it => it.in === 'header');
   }
 
-  get queries(): IParameterObject[] {
-    return this.parameters.filter(it => it.in === 'query')
+  get urlParams(): IParameterObject[] {
+    return this.parameters.filter(it => it.in === 'query' || it.in === 'path')
   }
 
   get formData(): IParameterObject[] {

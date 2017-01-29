@@ -8,9 +8,9 @@
       >{{response[0]}}</a>
     </nav>
   </div>
-  <div class="content container flex-container" fxLayout="column"
+  <div class="content flex-container" fxLayout="column"
        fxLayoutAlign="space-between stretch">
-    <md-tab-group>
+    <md-tab-group *ngIf="showContentTable">
       <md-tab label="Headers" *ngIf="headers.length > 0">
         <table class="table">
           <thead>
@@ -29,11 +29,13 @@
           </tbody>
         </table>
       </md-tab>
-      <md-tab label="Body">
-        <h1>Some body tab content</h1>
-        <p>...</p>
+      <md-tab label="Body" *ngIf="!!selectedResponse?.schema">
+        {{selectedResponse.schema | json}}
       </md-tab>
     </md-tab-group>
+    <div *ngIf="!showContentTable" class="w-100 text-center">
+      <h3>¯\_(ツ)_/¯</h3>
+    </div>
     <div class="bottom-tab flex-item" [class.bottom-tab-full]="showDescription">
       <div class="control-bar">
         <div class="container flex-container h-100" fxLayout="row" fxLayoutAlign="start center">
@@ -43,7 +45,7 @@
           </button>
         </div>
       </div>
-      <div [hidden]="!showDescription" class="response-description">
+      <div [hidden]="!showDescription" class="response-description container">
         <article [innerHTML]="selectedResponse?.description | marked"></article>
       </div>
     </div>

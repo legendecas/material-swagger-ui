@@ -23,10 +23,9 @@
 
 .control-bar {
   height: 3rem;
-  margin: 0 -1rem;
-  padding: 0 1rem;
   background-color: $primary-background-color;
-  border: 1px solid $panel-separator-color;
+  border-top: 1px solid $panel-separator-color;
+  border-bottom: 1px solid $panel-separator-color;
 }
 
 .response-description {

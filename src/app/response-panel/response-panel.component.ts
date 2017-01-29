@@ -51,6 +51,10 @@ export class ResponsePanelComponent implements OnInit, OnChanges {
     this.showDescription = !this.showDescription;
   }
 
+  get showContentTable(): boolean {
+    return this.headers.length > 0 || (this.selectedResponse && !!this.selectedResponse.schema)
+  }
+
   get headers(): [string, IHeaderObject][] {
     if (this.selectedResponse) {
       const keys = Object.keys(this.selectedResponse.headers || {});
