@@ -39,10 +39,20 @@
     margin-top: -0.5rem;
     font-size: 1rem;
     font-weight: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
   p {
     font-size: 0.75rem;
     margin-top: -0.5rem;
     font-weight: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
+}
+
+.method-badge {
+  margin-right: 0.25rem;
 }

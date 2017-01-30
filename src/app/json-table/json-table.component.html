@@ -1,14 +1,19 @@
 <div class="json-table flex-container" [class.json-table-root]="isRoot" fxLayout="row" fxLayoutAlign="start start">
-  <div class="flex-item" fxFlex="5%">
+  <div class="flex-item" fxFlex="6%">
     <md-icon [hidden]="!isArray && !isObject"
+             class="collapse-button"
              (click)="toggleContent()">
       {{contentHidden ? 'keyboard_arrow_right' : 'keyboard_arrow_down'}}
     </md-icon>
   </div>
-  <div class="flex-item" fxFlex="95%">
+  <div class="flex-item" fxFlex="94%">
     <div class="flex-container" fxLayout="column" fxLayoutAlign="start stretch">
       <div class="title line flex-item">
-        <div class="flex-container" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="flex-container"
+             fxLayout="row"
+             fxLayoutAlign="space-between center"
+             [mdTooltip]="schema.description"
+             mdTooltipPosition="below">
           <span class="flex-item">{{isRoot ? 'Root' : name}}</span>
           <div class="flex-item">{{typeAlias}}</div>
           <span class="flex-item">{{schema.type}}</span>

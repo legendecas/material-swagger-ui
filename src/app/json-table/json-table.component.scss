@@ -1,5 +1,21 @@
+@import "../variables";
+
+$line-separator-color: #EBEBEB;
+
 .json-table-root {
   padding-right: 1rem;
+}
+
+.collapse-button {
+  cursor: pointer;
+}
+
+.title {
+  border-bottom: 1px solid $line-separator-color;
+  margin-left: -0.5rem;
+  padding-left: 0.5rem;
+  margin-right: -0.5rem;
+  padding-right: 0.5rem;
 }
 
 .line {

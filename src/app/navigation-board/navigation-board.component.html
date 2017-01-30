@@ -24,7 +24,7 @@
         </div>
         <md-list-item *ngFor="let entrypoint of entrypointsOfTag(tag.name)"
                       routerLink="/entrypoint/{{entrypoint.method}}{{entrypoint.path}}">
-          <span class="badge badge-default">{{entrypoint.method}}</span>
+          <span class="badge badge-default method-badge">{{entrypoint.method.toUpperCase()}}</span>
           <span>{{entrypoint.path}}</span>
         </md-list-item>
       </div>

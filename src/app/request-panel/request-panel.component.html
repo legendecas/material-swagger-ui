@@ -1,9 +1,9 @@
 <div class="board">
   <div class="header container flex-container" fxLayout="row" fxLayoutAlign="center center">
     <div class="entrypoint-address-container card card-outline-primary flex-item">
-      <div class="flex-container" fxLayout="row">
-        <span>{{method}}</span>
-        <span>{{path}}</span>
+      <div class="flex-container h-100" fxLayout="row" fxLayoutAlign="start center">
+        <span class="method-span">{{method.toUpperCase()}}</span>
+        <span class="path-span">{{path}}</span>
       </div>
     </div>
   </div>

@@ -19,6 +19,16 @@
   padding: 0 1rem;
 }
 
+.method-span {
+  font-weight: bold;
+  color: $accent-mask-color;
+  margin-right: 1rem;
+}
+
+.path-span {
+
+}
+
 .content {
   height: calc(100% - #{$header-height});
 }
