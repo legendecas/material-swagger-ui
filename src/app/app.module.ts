@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { RequestPanelComponent } from './request-panel/request-panel.component';
 import { ResponsePanelComponent } from './response-panel/response-panel.component';
 import { NavigationBoardComponent } from './navigation-board/navigation-board.component';
-import { AppBarComponent } from './app-bar/app-bar.component';
 import { AppBoardComponent } from './app-board/app-board.component';
 import { EntrypointBoardComponent } from './entrypoint-board/entrypoint-board.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -36,7 +35,6 @@ const appRoutes: Routes = [
     RequestPanelComponent,
     ResponsePanelComponent,
     NavigationBoardComponent,
-    AppBarComponent,
     AppBoardComponent,
     EntrypointBoardComponent,
     PageNotFoundComponent,

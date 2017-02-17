@@ -1,10 +1,10 @@
 <div class="json-table flex-container" [class.json-table-root]="isRoot" fxLayout="row" fxLayoutAlign="start start">
   <div class="flex-item" fxFlex="6%">
-    <md-icon [hidden]="!isArray && !isObject"
+    <span [hidden]="!isArray && !isObject"
              class="collapse-button"
              (click)="toggleContent()">
-      {{contentHidden ? 'keyboard_arrow_right' : 'keyboard_arrow_down'}}
-    </md-icon>
+      {{contentHidden ? '+' : '-'}}
+    </span>
   </div>
   <div class="flex-item" fxFlex="94%">
     <div class="flex-container" fxLayout="column" fxLayoutAlign="start stretch">

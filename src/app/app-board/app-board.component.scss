@@ -1,19 +1,22 @@
 @import "../variables";
 
 .board {
-  height: 100%;
   width: 100%;
   background-color: $secondary-background-color;
   color: $primary-font-color;
 }
 
+.header-wrap {
+  padding: 2rem 0;
+}
+
 .header {
-  border-bottom: 1px solid $panel-separator-color;
-  background-color: $third-background-color;
-  height: $header-height;
+  //noinspection CssUnknownTarget
+  background: transparent url("./assets/square.svg") no-repeat left center;
+  background-size: 24px 24px;
+  padding-left: 48px;
 }
 
 .content {
-  height: calc(100% - #{$header-height});
-  overflow-y: auto;
+
 }
