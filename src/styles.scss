@@ -3,7 +3,6 @@
 @import "./app/variables";
 @import './app/theme';
 @import "./app/custom";
-@import "~bootstrap/scss/bootstrap";
 
 * {
   margin: 0;
@@ -38,4 +37,19 @@ body {
 .blocks-container {
   margin: auto;
   padding: 0 3rem;
+}
+
+.container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-weight: normal;
+    font-size: (2.5 - $i * 0.25) * 1rem;
+  }
 }
