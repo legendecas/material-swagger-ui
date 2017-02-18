@@ -1,40 +1,52 @@
-<div class="json-table flex-container" [class.json-table-root]="isRoot" fxLayout="row" fxLayoutAlign="start start">
-  <div class="flex-item" fxFlex="6%">
-    <span [hidden]="!isArray && !isObject"
-             class="collapse-button"
-             (click)="toggleContent()">
-      {{contentHidden ? '+' : '-'}}
-    </span>
-  </div>
-  <div class="flex-item" fxFlex="94%">
-    <div class="flex-container" fxLayout="column" fxLayoutAlign="start stretch">
-      <div class="title line flex-item">
-        <div class="flex-container"
-             fxLayout="row"
-             fxLayoutAlign="space-between center"
-             [mdTooltip]="schema.description"
-             mdTooltipPosition="below">
-          <span class="flex-item">{{isRoot ? 'Root' : name}}</span>
-          <div class="flex-item">{{typeAlias}}</div>
-          <span class="flex-item">{{schema.type}}</span>
-        </div>
+<div *ngIf="type === 'schema'">
+  <div class="line">
+    <div class="flex-container"
+         fxLayout="row"
+         fxLayoutAlign="space-between center">
+      <div class="flex-item">
+        <span class="collapse-button"
+              [hidden]="!isArray && !isObject"
+              (click)="toggleHideChildren()">{{hideChildren ? '+' : '-'}}</span>
+        <span>{{isRoot ? 'Root' : name}}</span>
+        <span>({{schema?.type}})</span>
       </div>
-      <div class="flex-item line" [hidden]="contentHidden">
-        <div *ngIf="isArray">
-          <app-json-table [isRoot]="false"
-                          [schema]="item"
-                          [name]="'item'"
-                          [typeAlias]="itemTypeAlias">
-          </app-json-table>
-        </div>
-        <div *ngIf="isObject">
-          <app-json-table *ngFor="let property of properties"
-                          [isRoot]="false"
-                          [name]="property[0]"
-                          [schema]="property[1]"
-                          [typeAlias]="property[2]">
-          </app-json-table>
-        </div>
+      <div class="flex-item schema-description">
+        <span *ngIf="schema?.description">{{schema?.description}}</span>
+        <span *ngIf="!schema?.description">-- no description --</span>
+      </div>
+    </div>
+  </div>
+  <div class="line children" [hidden]="hideChildren">
+    <div *ngIf="isArray">
+      <app-json-table [isRoot]="false"
+                      [schema]="item"
+                      [name]="'item'"
+                      [typeAlias]="itemTypeAlias">
+      </app-json-table>
+    </div>
+    <div *ngIf="isObject">
+      <app-json-table *ngFor="let property of properties"
+                      [isRoot]="false"
+                      [name]="property[0]"
+                      [schema]="property[1]"
+                      [typeAlias]="property[2]">
+      </app-json-table>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="type === 'parameters'">
+  <div class="line" *ngFor="let parameter of parameters">
+    <div class="flex-container"
+         fxLayout="row"
+         fxLayoutAlign="space-between center">
+      <div class="flex-item" fxFlex="50%">
+        <span>{{parameter.name}}</span>
+        <span>({{parameter.type}})</span>
+      </div>
+      <div class="flex-item schema-description" fxFlex="50%">
+        <span *ngIf="parameter.description">{{parameter.description}}</span>
+        <span *ngIf="!parameter.description">-- no description --</span>
       </div>
     </div>
   </div>

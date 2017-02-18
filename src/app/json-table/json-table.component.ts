@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { ISchemaObject } from '../api-definition';
+import { ISchemaObject, IParameterObject } from '../api-definition';
 import { ApiDefinitionService } from '../api-definition.service';
 import { Observable } from 'rxjs';
 
@@ -9,6 +9,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./json-table.component.scss']
 })
 export class JsonTableComponent implements OnInit, OnChanges {
+
+  @Input() type: 'schema' | 'parameters' = 'schema';
+
+  @Input() parameters: IParameterObject[] = [];
 
   @Input() name: string = '';
   @Input() schema: ISchemaObject;
@@ -20,7 +24,7 @@ export class JsonTableComponent implements OnInit, OnChanges {
 
   properties: [string, ISchemaObject, string][] = [];
 
-  contentHidden = false;
+  hideChildren = false;
 
   constructor(private apiDefinition: ApiDefinitionService) {
   }
@@ -29,33 +33,39 @@ export class JsonTableComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    switch (this.schema.type) {
-      case 'array':
-        if (this.schema.items.$ref) {
-          this.itemTypeAlias = this.schema.items.$ref;
-          this.apiDefinition.resolveReference(this.schema.items.$ref)
-            .subscribe(it => this.item = it);
-        } else {
-          this.item = this.schema.items;
+    switch (this.type) {
+      case 'schema':
+        switch (this.schema.type) {
+          case 'array':
+            if (this.schema.items.$ref) {
+              this.itemTypeAlias = this.schema.items.$ref;
+              this.apiDefinition.resolveReference(this.schema.items.$ref)
+                .subscribe(it => this.item = it);
+            } else {
+              this.item = this.schema.items;
+            }
+            break;
+          case 'object':
+            const keys = Object.keys(this.schema.properties || {});
+            Observable.from(keys)
+              .map(key => [key, this.schema.properties[key]])
+              .concatMap(([key, property]) => {
+                if (typeof property !== 'string' && property.$ref) {
+                  return this.apiDefinition.resolveReference(property.$ref).take(1)
+                    .map(it => [key, it, property.$ref]);
+                } else {
+                  return Observable.of([key, property, '']);
+                }
+              })
+              .map(it => it as [string, ISchemaObject, string])
+              .toArray()
+              .subscribe(properties => this.properties = properties);
+            break;
+          default:
+            break;
         }
         break;
-      case 'object':
-        const keys = Object.keys(this.schema.properties || {});
-        Observable.from(keys)
-          .map(key => [key, this.schema.properties[key]])
-          .concatMap(([key, property]) => {
-            if (typeof property !== 'string' && property.$ref) {
-              return this.apiDefinition.resolveReference(property.$ref).take(1)
-                .map(it => [key, it, property.$ref]);
-            } else {
-              return Observable.of([key, property, '']);
-            }
-          })
-          .map(it => it as [string, ISchemaObject, string])
-          .toArray()
-          .subscribe(properties => this.properties = properties);
-        break;
-      default:
+      case 'parameters':
         break;
     }
   }
@@ -68,8 +78,8 @@ export class JsonTableComponent implements OnInit, OnChanges {
     return this.schema.type === 'object';
   }
 
-  toggleContent() {
-    this.contentHidden = !this.contentHidden;
+  toggleHideChildren() {
+    this.hideChildren = !this.hideChildren;
   }
 
 }
