@@ -1,0 +1,34 @@
+<div class="board condensed">
+  <section class="nav-section container">
+    <h3>{{title}}</h3>
+  </section>
+
+  <section class="nav-section container"
+           routerLinkActive="active-section"
+           [routerLinkActiveOptions]="{exact: true}">
+    <span class="api-info-title nav-item"
+          routerLink="/app"
+          routerLinkActive="active-item"
+          [routerLinkActiveOptions]="{exact: true}">API Info</span>
+  </section>
+
+  <section class="nav-section container"
+           routerLinkActive="active-section"
+           [routerLinkActiveOptions]="{exact: true}"
+           *ngFor="let tag of tags">
+    <div class="tag-wrap">
+      <span class="tag-title">{{tag.name}}</span>
+      <p class="tag-description">{{tag.description}}</p>
+    </div>
+    <ul class="entrypoint-list">
+      <li class="entrypoint-item nav-item {{entrypoint.method.toLowerCase()}}"
+          *ngFor="let entrypoint of entrypointsOfTag(tag.name)"
+          routerLink="/entrypoint/{{entrypoint.method}}{{entrypoint.path}}"
+          routerLinkActive="active-item"
+          [routerLinkActiveOptions]="{exact: true}">
+        <span class="method-indicator">{{entrypoint.method.toUpperCase()}}</span>
+        <span class="path">{{entrypoint.path}}</span>
+      </li>
+    </ul>
+  </section>
+</div>

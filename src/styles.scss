@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./app/variables";
+@import './app/theme';
+@import "./app/custom";
+
+* {
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+}
+
+@media (min-resolution: 2dppx) {
+  * {
+    text-rendering: geometricPrecision;
+  }
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+button:focus {
+  outline: 0;
+}
+
+body {
+  font-family: "Roboto Mono", monospace;
+}
+
+.condensed {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.blocks-container {
+  margin: auto;
+  padding: 0 3rem;
+}
+
+.container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-weight: normal;
+    font-size: (2.75 - $i * 0.25) * 1rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+}

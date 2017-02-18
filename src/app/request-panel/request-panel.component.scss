@@ -1,0 +1,37 @@
+@import "../variables";
+
+.board {
+  height: 100%;
+  width: 100%;
+  background-color: $request-board-background-color;
+  color: $primary-font-color;
+}
+
+.header-wrap {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.header {
+  //noinspection CssUnknownTarget
+  background: transparent url("./assets/square.svg") no-repeat left center;
+  background-size: 24px 24px;
+  padding-left: 48px;
+}
+
+.header .method {
+  text-transform: uppercase;
+}
+
+.desc-block {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.desc-block:nth-of-type(2n) {
+  background-color: $request-desc-block-background-color;
+}
+
+.desc-title {
+  margin-bottom: 1rem;
+}

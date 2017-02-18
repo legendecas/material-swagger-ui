@@ -1,0 +1,70 @@
+@import "../variables";
+@import "../mixins";
+
+.board {
+  height: 100%;
+  width: 100%;
+  background-color: $nav-board-background-color;
+  color: $primary-font-color;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.nav-section {
+  margin: 2rem 0;
+}
+
+.nav-section:first-of-type {
+  margin-top: 0;
+}
+
+.nav-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.api-info-title {
+  font-size: 1.25rem;
+}
+
+.tag-title {
+  font-size: 1.25rem;
+}
+
+.entrypoint-list {
+  list-style: none;
+}
+
+.entrypoint-item:before {
+  content: '• ';
+}
+
+.method-indicator {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.path {
+  font-size: 1rem;
+}
+
+@each $method, $color in $method-colors {
+  .entrypoint-item.#{$method}:before {
+    color: $color;
+  }
+
+  .entrypoint-item.#{$method} .method-indicator {
+    color: $color;
+  }
+}
+
+.active-section {
+  background-color: $nav-board-accent-background-color;
+}
+
+.active-item {
+  color: $nav-board-accent-color;
+}

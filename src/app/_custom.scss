@@ -1,0 +1,4 @@
+@import "./theme";
+
+$brand-primary: map_get($app-primary, 500);
+$brand-warning: map_get($app-warn, 500);

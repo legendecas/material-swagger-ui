@@ -1,0 +1,39 @@
+<div class="board">
+  <section class="response-block" *ngFor="let response of responses">
+    <div class="header condensed blocks-container">
+      <h4>
+        <span *ngIf="response[0] !== 'default'">Response</span>
+        <span>{{response[0]}}</span>
+      </h4>
+    </div>
+
+    <section class="desc-block blocks-container">
+      <article [innerHTML]="response[1].description | marked"></article>
+    </section>
+
+    <section class="desc-block blocks-container" *ngIf="headers(response[1]).length > 0">
+      <h5 class="desc-title">Headers</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let header of headers(response[1])">
+            <th>{{header[0]}}</th>
+            <td>{{header[1].description}}</td>
+            <td>{{header[1].type}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="desc-block blocks-container" *ngIf="!!response[1].schema">
+      <h5 class="desc-title">Body</h5>
+      <app-json-table [schema]="response[1].schema"></app-json-table>
+    </section>
+  </section>
+</div>

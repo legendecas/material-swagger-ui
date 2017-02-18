@@ -1,0 +1,21 @@
+@import "../variables";
+
+.board {
+  width: 100%;
+  color: $primary-font-color;
+}
+
+.header-wrap {
+  padding: 2rem 0;
+}
+
+.header {
+  //noinspection CssUnknownTarget
+  background: transparent url("./assets/square.svg") no-repeat left center;
+  background-size: 24px 24px;
+  padding-left: 48px;
+}
+
+.content {
+
+}

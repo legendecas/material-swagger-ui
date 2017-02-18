@@ -1,0 +1,32 @@
+<div class="board">
+  <div class="header-wrap blocks-container">
+    <h2 class="header condensed">
+      <span class="method">{{method}}</span>
+      <span class="path">{{path}}</span>
+    </h2>
+  </div>
+
+  <section class="desc-block blocks-container">
+    <article [innerHTML]="entrypoint?.description | marked"></article>
+  </section>
+
+  <section class="desc-block blocks-container" *ngIf="headers.length > 0">
+    <h5 class="desc-title">Headers</h5>
+    <app-json-table type="parameters" [parameters]="headers"></app-json-table>
+  </section>
+
+  <section class="desc-block blocks-container" *ngIf="urlParams.length > 0">
+    <h5 class="desc-title">URL Params</h5>
+    <app-json-table type="parameters" [parameters]="urlParams"></app-json-table>
+  </section>
+
+  <section class="desc-block blocks-container" *ngIf="formData.length > 0">
+    <h5 class="desc-title">FormData</h5>
+    <app-json-table type="parameters" [parameters]="formData"></app-json-table>
+  </section>
+
+  <section class="desc-block blocks-container" *ngIf="body.length > 0">
+    <h5 class="desc-title">Body</h5>
+    <app-json-table [schema]="body[0].schema"></app-json-table>
+  </section>
+</div>

@@ -1,0 +1,35 @@
+@import "../variables";
+
+.board {
+  height: 100%;
+  width: 100%;
+  background-color: $responses-board-background-color;
+  color: $dark-primary-font-color;
+}
+
+.response-block {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.header-wrap {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.desc-block {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.desc-block {
+  background-color: $response-block-background-color;
+}
+
+.desc-block:first-of-type {
+  background-color: unset;
+}
+
+.desc-title {
+  margin-bottom: 1rem;
+}
