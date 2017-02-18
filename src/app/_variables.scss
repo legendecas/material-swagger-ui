@@ -1,15 +1,5 @@
-$primary-font-color: #040404;
-$accent-primary-font-color: #FFFFFF;
-$secondary-font-color: #404345;
-$accent-secondary-font-color: rgba(#FAFAFA, 0.5);
-
-$primary-background-color: #EEEEEE;
-$secondary-background-color: #FFFFFF;
-$third-background-color: #FAFAFA;
-
-$accent-mask-color: rgba(#1B76E2, 0.81);
-
-$panel-separator-color: #CACACA;
+$primary-font-color: rgba(#040404, 0.81);
+$dark-primary-font-color: rgba(#FFFFFF, 0.81);
 
 $method-colors: (
   head: #512DA8,
@@ -19,4 +9,12 @@ $method-colors: (
   delete: #D32F2F,
 );
 
-$header-height: 4rem;
+$nav-board-background-color: #F2F4F5;
+$nav-board-accent-background-color: rgba(#FFFFFF, 0.5);
+$nav-board-accent-color: rgba(#2979FF, 0.81);
+
+$request-board-background-color: #FFFFFF;
+$request-desc-block-background-color: rgba(#EEEEEE, 0.28);
+
+$responses-board-background-color: #393D40;
+$response-block-background-color: #313437;

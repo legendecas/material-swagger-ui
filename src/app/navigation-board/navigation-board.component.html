@@ -1,33 +1,34 @@
-<div class="board">
-  <div class="header container flex-container" fxLayout="column" fxLayoutAlign="center center">
-    <table class="info-table table">
-      <tbody>
-        <tr>
-          <th>Base Path</th>
-          <td>{{basePath}}</td>
-        </tr>
-        <tr>
-          <th>Doc Version</th>
-          <td>{{docVersion}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="content container">
-    <md-nav-list dense>
-      <md-list-item routerLink="/app"> Api Descriptions </md-list-item>
-      <md-divider></md-divider>
-      <div *ngFor="let tag of tags">
-        <div md-subheader class="tag">
-          <h3>{{tag.name}}</h3>
-          <p>{{tag.description}}</p>
-        </div>
-        <md-list-item *ngFor="let entrypoint of entrypointsOfTag(tag.name)"
-                      routerLink="/entrypoint/{{entrypoint.method}}{{entrypoint.path}}">
-          <span class="badge badge-default method-badge">{{entrypoint.method.toUpperCase()}}</span>
-          <span>{{entrypoint.path}}</span>
-        </md-list-item>
-      </div>
-    </md-nav-list>
-  </div>
+<div class="board condensed">
+  <section class="nav-section container">
+    <h3>{{title}}</h3>
+  </section>
+
+  <section class="nav-section container"
+           routerLinkActive="active-section"
+           [routerLinkActiveOptions]="{exact: true}">
+    <span class="api-info-title nav-item"
+          routerLink="/app"
+          routerLinkActive="active-item"
+          [routerLinkActiveOptions]="{exact: true}">API Info</span>
+  </section>
+
+  <section class="nav-section container"
+           routerLinkActive="active-section"
+           [routerLinkActiveOptions]="{exact: true}"
+           *ngFor="let tag of tags">
+    <div class="tag-wrap">
+      <span class="tag-title">{{tag.name}}</span>
+      <p class="tag-description">{{tag.description}}</p>
+    </div>
+    <ul class="entrypoint-list">
+      <li class="entrypoint-item nav-item {{entrypoint.method.toLowerCase()}}"
+          *ngFor="let entrypoint of entrypointsOfTag(tag.name)"
+          routerLink="/entrypoint/{{entrypoint.method}}{{entrypoint.path}}"
+          routerLinkActive="active-item"
+          [routerLinkActiveOptions]="{exact: true}">
+        <span class="method-indicator">{{entrypoint.method.toUpperCase()}}</span>
+        <span class="path">{{entrypoint.path}}</span>
+      </li>
+    </ul>
+  </section>
 </div>

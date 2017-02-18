@@ -1,58 +1,70 @@
 @import "../variables";
+@import "../mixins";
 
 .board {
   height: 100%;
   width: 100%;
-  background-color: $primary-background-color;
+  background-color: $nav-board-background-color;
   color: $primary-font-color;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
 }
 
-.header {
-  height: $header-height;
-  border-bottom: 1px solid $panel-separator-color;
+.nav-section {
+  margin: 2rem 0;
 }
 
-.info-table {
-  margin: 0;
-  font-size: 0.75rem;
-  color: $primary-font-color;
+.nav-section:first-of-type {
+  margin-top: 0;
+}
 
-  th {
-    color: $secondary-font-color;
-    font-weight: normal;
-    padding: 0;
+.nav-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.api-info-title {
+  font-size: 1.25rem;
+}
+
+.tag-title {
+  font-size: 1.25rem;
+}
+
+.entrypoint-list {
+  list-style: none;
+}
+
+.entrypoint-item:before {
+  content: '• ';
+}
+
+.method-indicator {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.path {
+  font-size: 1rem;
+}
+
+@each $method, $color in $method-colors {
+  .entrypoint-item.#{$method}:before {
+    color: $color;
   }
 
-  td {
-    text-align: right;
-    padding: 0;
+  .entrypoint-item.#{$method} .method-indicator {
+    color: $color;
   }
 }
 
-.content {
-  height: calc(100% - #{$header-height});
-  overflow-y: auto;
+.active-section {
+  background-color: $nav-board-accent-background-color;
 }
 
-.tag {
-  h3 {
-    margin-top: -0.5rem;
-    font-size: 1rem;
-    font-weight: normal;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  p {
-    font-size: 0.75rem;
-    margin-top: -0.5rem;
-    font-weight: normal;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-}
-
-.method-badge {
-  margin-right: 0.25rem;
+.active-item {
+  color: $nav-board-accent-color;
 }

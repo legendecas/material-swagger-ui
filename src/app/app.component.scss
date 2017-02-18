@@ -2,10 +2,5 @@
 
 .app-container {
   overflow: hidden;
-  height: 100vh;
   width: 100vw;
-}
-
-.app-board:first-of-type {
-  border-right: 1px solid $panel-separator-color;
 }

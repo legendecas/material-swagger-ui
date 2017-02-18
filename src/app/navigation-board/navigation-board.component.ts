@@ -10,6 +10,7 @@ import { ITagObject } from '../api-definition';
 })
 export class NavigationBoardComponent implements OnInit {
 
+  title: string = '';
   basePath: string = '/';
   docVersion: string;
 
@@ -20,6 +21,7 @@ export class NavigationBoardComponent implements OnInit {
 
   ngOnInit() {
     this.apiDefinition.definitionSubject.subscribe(definition => {
+      this.title = definition.info.title;
       this.basePath = definition.basePath;
       this.docVersion = definition.info.version;
     });
