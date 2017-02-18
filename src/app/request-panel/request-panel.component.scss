@@ -3,47 +3,35 @@
 .board {
   height: 100%;
   width: 100%;
-  background-color: $secondary-background-color;
+  background-color: $request-board-background-color;
   color: $primary-font-color;
 }
 
+.header-wrap {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .header {
-  border-bottom: 1px solid $panel-separator-color;
-  background-color: $third-background-color;
-  height: $header-height;
+  //noinspection CssUnknownTarget
+  background: transparent url("./assets/square.svg") no-repeat left center;
+  background-size: 24px 24px;
+  padding-left: 48px;
 }
 
-.header > .entrypoint-address-container {
-  width: 100%;
-  height: 2rem;
-  padding: 0 1rem;
+.header .method {
+  text-transform: uppercase;
 }
 
-.method-span {
-  font-weight: bold;
-  color: $accent-mask-color;
-  margin-right: 1rem;
+.desc-block {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
-.path-span {
-
+.desc-block:nth-of-type(2n) {
+  background-color: $request-desc-block-background-color;
 }
 
-.content {
-  height: calc(100% - #{$header-height});
-}
-
-.bottom-tab-full {
-  height: 30%;
-}
-
-.control-bar {
-  height: 3rem;
-  background-color: $primary-background-color;
-  border-top: 1px solid $panel-separator-color;
-  border-bottom: 1px solid $panel-separator-color;
-}
-
-.entrypoint-description {
-  overflow-y: auto;
+.desc-title {
+  margin-bottom: 2rem;
 }

@@ -1,55 +1,39 @@
 <div class="board">
-  <div class="header container flex-container" fxLayout="row" fxLayoutAlign="start center">
-    <nav class="nav nav-pills flex-container" fxLayout="row">
-      <a *ngFor="let response of responses"
-         class="flex-sm-fill text-sm-center nav-link"
-         [class.active]="selectedResponseName === response[0]"
-         (click)="switchResponse(response[0])"
-      >{{response[0]}}</a>
-    </nav>
-  </div>
-  <div class="content flex-container" fxLayout="column"
-       fxLayoutAlign="space-between stretch">
-    <md-tab-group *ngIf="showContentTable">
-      <md-tab label="Headers" *ngIf="headers.length > 0">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let header of headers">
-              <th>{{header[0]}}</th>
-              <td>{{header[1].description}}</td>
-              <td>{{header[1].type}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </md-tab>
-      <md-tab label="Body" *ngIf="selectedResponse && !!selectedResponse.schema">
-        <div class="container">
-          <app-json-table [schema]="selectedResponse.schema"></app-json-table>
-        </div>
-      </md-tab>
-    </md-tab-group>
-    <div *ngIf="!showContentTable" class="w-100 text-center">
-      <h3>¯\_(ツ)_/¯</h3>
+  <section class="response-block" *ngFor="let response of responses">
+    <div class="header condensed blocks-container">
+      <h4>
+        <span *ngIf="response[0] !== 'default'">Response</span>
+        <span>{{response[0]}}</span>
+      </h4>
     </div>
-    <div class="bottom-tab flex-item" [class.bottom-tab-full]="showDescription">
-      <div class="control-bar">
-        <div class="container flex-container h-100" fxLayout="row" fxLayoutAlign="start center">
-          <button md-icon-button class="flex-item" (click)="toggleDescription()">
-            <md-icon [hidden]="!showDescription">visibility</md-icon>
-            <md-icon [hidden]="showDescription">visibility_off</md-icon>
-          </button>
-        </div>
-      </div>
-      <div [hidden]="!showDescription" class="response-description container">
-        <article [innerHTML]="selectedResponse?.description | marked"></article>
-      </div>
-    </div>
-  </div>
+
+    <section class="desc-block blocks-container">
+      <article [innerHTML]="response[1].description | marked"></article>
+    </section>
+
+    <section class="desc-block blocks-container" *ngIf="headers(response[1]).length > 0">
+      <h5 class="desc-title">Headers</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let header of headers(response[1])">
+            <th>{{header[0]}}</th>
+            <td>{{header[1].description}}</td>
+            <td>{{header[1].type}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="desc-block blocks-container" *ngIf="!!response[1].schema">
+      <h5 class="desc-title">Body</h5>
+      <app-json-table [schema]="response[1].schema"></app-json-table>
+    </section>
+  </section>
 </div>

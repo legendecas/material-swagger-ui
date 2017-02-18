@@ -16,11 +16,6 @@ export class ResponsePanelComponent implements OnInit, OnChanges {
   entrypoint: Entrypoint;
   responses: [string, IResponseObject][] = [];
 
-  selectedResponseName: string;
-  selectedResponse: IResponseObject;
-
-  showDescription: boolean = true;
-
   constructor(private apiDefinition: ApiDefinitionService) {
   }
 
@@ -31,34 +26,14 @@ export class ResponsePanelComponent implements OnInit, OnChanges {
       .do(it => this.entrypoint = it)
       .concatMap(it => it.resolveResponses(this.apiDefinition))
       .filter(it => it.length > 0)
-      .do(it => {
-        this.selectedResponseName = it[0][0];
-        this.selectedResponse = it[0][1];
-      })
       .take(1)
       .subscribe(it => this.responses = it);
   }
 
-  switchResponse(response: string) {
-    const filtered = this.responses.filter(it => it[0] == response);
-    if (filtered.length > 0) {
-      this.selectedResponseName = filtered[0][0];
-      this.selectedResponse = filtered[0][1]
-    }
-  }
-
-  toggleDescription() {
-    this.showDescription = !this.showDescription;
-  }
-
-  get showContentTable(): boolean {
-    return this.headers.length > 0 || (this.selectedResponse && !!this.selectedResponse.schema)
-  }
-
-  get headers(): [string, IHeaderObject][] {
-    if (this.selectedResponse) {
-      const keys = Object.keys(this.selectedResponse.headers || {});
-      return keys.map(key => [key, this.selectedResponse.headers[key]] as [string, IHeaderObject])
+  headers(response: IResponseObject): [string, IHeaderObject][] {
+    if (response) {
+      const keys = Object.keys(response.headers || {});
+      return keys.map(key => [key, response.headers[key]] as [string, IHeaderObject])
     } else {
       return [];
     }

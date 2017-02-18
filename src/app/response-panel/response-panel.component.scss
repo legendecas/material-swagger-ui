@@ -3,39 +3,29 @@
 .board {
   height: 100%;
   width: 100%;
-  background-color: $secondary-background-color;
-  color: $primary-font-color;
+  background-color: $responses-board-background-color;
+  color: $dark-primary-font-color;
 }
 
-.header {
-  height: $header-height;
-  border-bottom: 1px solid $panel-separator-color;
-  background-color: $third-background-color;
+.response-block {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
 }
 
-.nav-link {
-  cursor: pointer;
+.header-wrap {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
-.nav-link.active:hover {
-  color: white !important;
+.desc-block {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
-.content {
-  height: calc(100% - #{$header-height});
+.desc-block {
+  background-color: $response-block-background-color;
 }
 
-.bottom-tab-full {
-  height: 30%;
-}
-
-.control-bar {
-  height: 3rem;
-  background-color: $primary-background-color;
-  border-top: 1px solid $panel-separator-color;
-  border-bottom: 1px solid $panel-separator-color;
-}
-
-.response-description {
-  overflow-y: auto;
+.desc-block:first-of-type {
+  background-color: unset;
 }

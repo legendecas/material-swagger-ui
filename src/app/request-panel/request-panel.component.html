@@ -1,90 +1,32 @@
 <div class="board">
-  <div class="header container flex-container" fxLayout="row" fxLayoutAlign="center center">
-    <div class="entrypoint-address-container card card-outline-primary flex-item">
-      <div class="flex-container h-100" fxLayout="row" fxLayoutAlign="start center">
-        <span class="method-span">{{method.toUpperCase()}}</span>
-        <span class="path-span">{{path}}</span>
-      </div>
-    </div>
+  <div class="header-wrap blocks-container">
+    <h2 class="header condensed">
+      <span class="method">{{method}}</span>
+      <span class="path">{{path}}</span>
+    </h2>
   </div>
-  <div class="content flex-container" fxLayout="column"
-       fxLayoutAlign="space-between stretch">
-    <md-tab-group class="flex-item" *ngIf="parameters.length > 0">
-      <md-tab label="Headers" *ngIf="headers.length > 0">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let header of headers">
-              <th>{{header.name}}</th>
-              <td>{{header.description}}</td>
-              <td>{{header.type}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </md-tab>
-      <md-tab label="URL Params" *ngIf="urlParams.length > 0">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let param of urlParams">
-              <th>{{param.name}}</th>
-              <td>{{param.description}}</td>
-              <td>{{param.type}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </md-tab>
-      <md-tab label="FormData" *ngIf="formData.length > 0">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let param of formData">
-              <th>{{param.name}}</th>
-              <td>{{param.description}}</td>
-              <td>{{param.type}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </md-tab>
-      <md-tab label="Body" *ngIf="body.length > 0">
-        <div class="container">
-          <app-json-table [schema]="body[0].schema"></app-json-table>
-        </div>
-      </md-tab>
-    </md-tab-group>
-    <div *ngIf="parameters.length <= 0" class="w-100 text-center">
-      <h3>¯\_(ツ)_/¯</h3>
-    </div>
-    <div class="bottom-tab flex-item" [class.bottom-tab-full]="showDescription">
-      <div class="control-bar">
-        <div class="container flex-container h-100" fxLayout="row" fxLayoutAlign="start center">
-          <button md-icon-button class="flex-item" (click)="toggleDescription()">
-            <md-icon [hidden]="!showDescription">visibility</md-icon>
-            <md-icon [hidden]="showDescription">visibility_off</md-icon>
-          </button>
-        </div>
-      </div>
-      <div [hidden]="!showDescription" class="entrypoint-description container">
-        <article [innerHTML]="entrypoint?.description | marked"></article>
-      </div>
-    </div>
-  </div>
+
+  <section class="desc-block blocks-container">
+    <article [innerHTML]="entrypoint?.description | marked"></article>
+  </section>
+
+  <section class="desc-block blocks-container" *ngIf="headers.length > 0">
+    <h5 class="desc-title">Headers</h5>
+    <app-json-table type="parameters" [parameters]="headers"></app-json-table>
+  </section>
+
+  <section class="desc-block blocks-container" *ngIf="urlParams.length > 0">
+    <h5 class="desc-title">URL Params</h5>
+    <app-json-table type="parameters" [parameters]="urlParams"></app-json-table>
+  </section>
+
+  <section class="desc-block blocks-container" *ngIf="formData.length > 0">
+    <h5 class="desc-title">FormData</h5>
+    <app-json-table type="parameters" [parameters]="formData"></app-json-table>
+  </section>
+
+  <section class="desc-block blocks-container" *ngIf="body.length > 0">
+    <h5 class="desc-title">Body</h5>
+    <app-json-table [schema]="body[0].schema"></app-json-table>
+  </section>
 </div>
