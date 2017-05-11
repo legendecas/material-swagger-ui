@@ -13,7 +13,7 @@ const style = StyleSheet.create({
 const Drawer = ({ tags }) => (
   <ul
     ref={ref => {
-      const offset = $(ref).offset() || {};
+      const offset = (typeof $(ref).offset === 'function' ? $(ref).offset() : {}) || {};
       const top = offset.top;
       $(ref).pushpin({ top });
 
