@@ -26,7 +26,7 @@ const Request = ({ parameters = [] }) => {
                 <td>{param.name}</td>
                 <td
                   dangerouslySetInnerHTML={{
-                    __html: marked(param.description),
+                    __html: marked(param.description || ''),
                   }}
                 />
                 <td>{param.in}</td>
