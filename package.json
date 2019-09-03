@@ -61,7 +61,7 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
-    "superagent": "^2.2.0"
+    "superagent": "^5.0.2"
   },
   "babel": {
     "presets": [
